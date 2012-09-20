@@ -3,7 +3,7 @@ projetoLP1
 
 Equipe:
 
-Gustavo Katel
+Gustavo Brito (GustavoKatel)
 Arthur Chacon
 Rodolfo Strunkis
 Cícero Marcelo
