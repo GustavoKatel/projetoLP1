@@ -9,4 +9,4 @@ Rodolfo Strunkis
 Cícero Marcelo
 
 
-projeto LP1
+projeto LP1 - Cadastro de Currículos
