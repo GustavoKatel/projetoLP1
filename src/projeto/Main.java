@@ -18,6 +18,11 @@ import javax.swing.SwingConstants;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JInternalFrame;
+import java.awt.FlowLayout;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.BoxLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
@@ -53,6 +58,11 @@ public class Main extends JFrame {
 		menuBar.add(mnArquivo);
 		
 		JMenuItem mntmNovoCurrculo = new JMenuItem("Novo Curr\u00EDculo");
+		mntmNovoCurrculo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//
+			}
+		});
 		mnArquivo.add(mntmNovoCurrculo);
 		
 		JMenuItem mntmPesquisar = new JMenuItem("Pesquisar");
@@ -74,10 +84,10 @@ public class Main extends JFrame {
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(desktopPane, BorderLayout.CENTER);
+		desktopPane.setLayout(new MigLayout("", "[193px,grow]", "[22px,grow]"));
 		
 		JLabel lblCadastroDeCurrculo = new JLabel("Cadastro de Curr\u00EDculo");
 		lblCadastroDeCurrculo.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		lblCadastroDeCurrculo.setBounds(135, 103, 155, 14);
-		desktopPane.add(lblCadastroDeCurrculo);
+		desktopPane.add(lblCadastroDeCurrculo, "cell 0 0,alignx center,growy");
 	}
 }
