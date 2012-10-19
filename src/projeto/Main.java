@@ -11,6 +11,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import javax.swing.JInternalFrame;
 
 public class Main extends JFrame {
 
@@ -63,6 +70,14 @@ public class Main extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.add(desktopPane, BorderLayout.CENTER);
+		
+		JLabel lblCadastroDeCurrculo = new JLabel("Cadastro de Curr\u00EDculo");
+		lblCadastroDeCurrculo.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
+		lblCadastroDeCurrculo.setBounds(135, 103, 155, 14);
+		desktopPane.add(lblCadastroDeCurrculo);
 	}
-
 }
