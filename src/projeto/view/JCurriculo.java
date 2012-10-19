@@ -15,7 +15,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+
 import java.awt.Color;
+import java.text.ParseException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class JCurriculo extends JInternalFrame {
 
@@ -27,14 +32,14 @@ public class JCurriculo extends JInternalFrame {
 	private Curriculo curriculo;
 	private JTextField nome_text;
 	private JTextField endereco_text;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField email_text;
 	
 	public JCurriculo(Curriculo curriculo)
 	{
-		this.curriculo = curriculo;
+		if(curriculo!=null)
+			this.curriculo = curriculo;
+		else
+			this.curriculo = new Curriculo("", "", "", "", 0, 0);
 		
 		setTitle("Currículo");
 		setResizable(true);
@@ -66,8 +71,10 @@ public class JCurriculo extends JInternalFrame {
 		panel_4.setLayout(new MigLayout("", "[grow]", "[]"));
 		
 		nome_text = new JTextField();
+		nome_text.setToolTipText("Digite o nome");
 		panel_4.add(nome_text, "cell 0 0,growx");
 		nome_text.setColumns(10);
+		nome_text.setText(curriculo.getNome());
 		
 		JLabel lblEndereo = new JLabel("Endereço:");
 		panel_5.add(lblEndereo, "cell 0 2,alignx right");
@@ -79,45 +86,76 @@ public class JCurriculo extends JInternalFrame {
 		endereco_text = new JTextField();
 		panel_3.add(endereco_text, "cell 0 0,growx");
 		endereco_text.setColumns(10);
+		endereco_text.setText(curriculo.getEndereco());
 		
 		JLabel lblTelefone = new JLabel("Telefone:");
 		panel_5.add(lblTelefone, "cell 0 3,alignx right");
 		
 		JPanel panel_1 = new JPanel();
 		panel_5.add(panel_1, "cell 1 3");
-		panel_1.setLayout(new MigLayout("", "[30px:n][][][][grow]", "[]"));
+		panel_1.setLayout(new MigLayout("", "[130px:n][][][grow]", "[]"));
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		panel_1.add(formattedTextField, "cell 0 0,growx");
-		
-		textField = new JTextField();
-		panel_1.add(textField, "cell 1 0,growx");
-		textField.setColumns(10);
+		MaskFormatter telefoneFormatter = null;
+		try {
+			telefoneFormatter = new MaskFormatter("(##) ####-####");
+			telefoneFormatter.setValidCharacters("0123456789");
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		JFormattedTextField telefone_forText = new JFormattedTextField(telefoneFormatter);
+		panel_1.add(telefone_forText, "cell 0 0,growx");
 		
 		JLabel lblEmail = new JLabel("Email:");
-		panel_1.add(lblEmail, "cell 3 0,alignx trailing");
+		panel_1.add(lblEmail, "cell 2 0,alignx trailing");
 		
-		textField_1 = new JTextField();
-		panel_1.add(textField_1, "cell 4 0,growx");
-		textField_1.setColumns(10);
+		email_text = new JTextField();
+		panel_1.add(email_text, "cell 3 0,growx");
+		email_text.setColumns(10);
 		
 		JLabel lblCpf = new JLabel("CPF:");
 		panel_5.add(lblCpf, "cell 0 4,alignx right");
 		
 		JPanel panel_2 = new JPanel();
 		panel_5.add(panel_2, "cell 1 4");
-		panel_2.setLayout(new MigLayout("", "[][][][grow]", "[]"));
+		panel_2.setLayout(new MigLayout("", "[130px:n][][][grow]", "[]"));
 		
-		textField_2 = new JTextField();
-		panel_2.add(textField_2, "cell 0 0,growx");
-		textField_2.setColumns(10);
+		MaskFormatter cpfFm = null;
+		try
+		{
+			cpfFm = new MaskFormatter("###.###.###-##");
+			cpfFm.setValidCharacters("0123456789");
+		}catch (ParseException e) {
+			// TODO: handle exception
+		}
+		JFormattedTextField cpf_forText = new JFormattedTextField(cpfFm);
+		cpf_forText.setToolTipText("Digite o cpf (Somente números)");
+		panel_2.add(cpf_forText, "cell 0 0,growx");
 		
 		JLabel lblRegistroProfissional = new JLabel("Registro Profissional:");
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
 		
-		textField_3 = new JTextField();
-		panel_2.add(textField_3, "cell 3 0,growx");
-		textField_3.setColumns(10);
+		JFormattedTextField regProfissional_forText = new JFormattedTextField();
+		regProfissional_forText.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				boolean isDigit=false;
+				for(char c : "0123456789".toCharArray())
+				{
+					if(c==e.getKeyChar())
+					{
+						isDigit=true;
+						break;
+					}
+				}
+				if(!isDigit)
+				{
+					e.consume();
+					System.out.println("não é dígito!");
+				}
+			}
+		});
+		panel_2.add(regProfissional_forText, "cell 3 0,growx");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));

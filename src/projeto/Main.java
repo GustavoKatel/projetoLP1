@@ -9,23 +9,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import javax.swing.JInternalFrame;
-import java.awt.FlowLayout;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class Main extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -49,7 +44,7 @@ public class Main extends JFrame {
 	 */
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 691, 473);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -84,10 +79,9 @@ public class Main extends JFrame {
 		JDesktopPane desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(desktopPane, BorderLayout.CENTER);
-		desktopPane.setLayout(new MigLayout("", "[193px,grow]", "[22px,grow]"));
 		
-		JLabel lblCadastroDeCurrculo = new JLabel("Cadastro de Curr\u00EDculo");
-		lblCadastroDeCurrculo.setFont(new Font("Modern No. 20", Font.PLAIN, 18));
-		desktopPane.add(lblCadastroDeCurrculo, "cell 0 0,alignx center,growy");
+		JLabel lblCadastroDeCurrculos = new JLabel("Cadastro de Currículos");
+		lblCadastroDeCurrculos.setBounds(12, 12, 414, 15);
+		desktopPane.add(lblCadastroDeCurrculos);
 	}
 }
