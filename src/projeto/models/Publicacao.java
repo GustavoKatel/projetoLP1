@@ -2,7 +2,7 @@ package projeto.models;
 
 import java.util.ArrayList;
 
-//Classe de manipulação de dados de Publicação
+//Classe de manipulaÃ§Ã£o de dados de PublicaÃ§Ã£o
 public class Publicacao {
 	private String titulo;
 	private ArrayList<String> autores;
@@ -10,7 +10,7 @@ public class Publicacao {
 	private int ano;
 	private String area;
 
-//Construtor da classe Publicação
+//Construtor da classe PublicaÃ§Ã£o
 	public Publicacao(String titulo, String evento, String area,
 			int ano) {
 		super();

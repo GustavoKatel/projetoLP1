@@ -2,7 +2,7 @@ package projeto.models;
 
 import java.util.ArrayList;
 
-//Classe de dados para manipulação de Currículo
+//Classe de dados para manipulaÃ§Ã£o de CurrÃ­culo
 public class Curriculo {
 	
 	private String nome;
@@ -13,7 +13,7 @@ public class Curriculo {
 	private int reg_profissional;
 	private ArrayList<Titulo> titulos;
 	
-	//Construtor da classe Currículo.
+	//Construtor da classe CurrÃ­culo.
 	public Curriculo(String nome, String endereco, String telefone,
 			String email, int cpf, int reg_profissional) {
 		super();

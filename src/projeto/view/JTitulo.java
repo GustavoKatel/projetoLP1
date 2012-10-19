@@ -94,6 +94,7 @@ public class JTitulo extends JInternalFrame {
 		uf_text = new JTextField();
 		panel_4.add(uf_text, "cell 3 0");
 		uf_text.setColumns(10);
+		
 		if(titulo!=null)
 			this.titulo = titulo;
 		else

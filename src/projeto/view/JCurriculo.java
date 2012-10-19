@@ -34,11 +34,13 @@ public class JCurriculo extends JInternalFrame {
 	
 	public JCurriculo(Curriculo curriculo)
 	{
+		this.curriculo = curriculo;
+		
 		setTitle("Currículo");
 		setResizable(true);
 		setMaximizable(true);
 		setClosable(true);
-		this.curriculo = curriculo;
+		
 		getContentPane().setLayout(new MigLayout("", "[grow]", "[grow][grow]"));
 		
 		JScrollPane scrollPane = new JScrollPane();
