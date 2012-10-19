@@ -17,7 +17,7 @@ public abstract class GetData {
 				v = Integer.parseInt(JOptionPane.showInputDialog(message));
 				errado=false;
 			}catch (NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Digite um nÃºmero vÃ¡lido.");
+				JOptionPane.showMessageDialog(null, "Digite um número válido.");
 				errado=true;
 			}
 		}
@@ -35,7 +35,7 @@ public abstract class GetData {
 				v = Double.parseDouble(JOptionPane.showInputDialog(message));
 				errado=false;
 			}catch (NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Digite um nÃºmero vÃ¡lido.");
+				JOptionPane.showMessageDialog(null, "Digite um número válido.");
 				errado=true;
 			}
 		}
