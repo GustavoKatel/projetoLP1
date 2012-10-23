@@ -22,6 +22,7 @@ import java.beans.PropertyVetoException;
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
+import java.awt.Font;
 
 public class Main extends JFrame {
 
@@ -100,8 +101,9 @@ public class Main extends JFrame {
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		
-		JLabel lblCadastroDeCurrculos = new JLabel("Cadastro de Currículos");
-		lblCadastroDeCurrculos.setBounds(12, 12, 414, 15);
+		JLabel lblCadastroDeCurrculos = new JLabel("Cadastro de Curriculos");
+		lblCadastroDeCurrculos.setFont(new Font("Modern No. 20", Font.PLAIN, 29));
+		lblCadastroDeCurrculos.setBounds(224, 187, 414, 32);
 		desktopPane.add(lblCadastroDeCurrculos);
 	}
 }

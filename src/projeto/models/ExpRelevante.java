@@ -2,6 +2,8 @@ package projeto.models;
 
 import java.util.GregorianCalendar;
 
+// Classe Experiencia Relevante que herda os atributos de Experiencia Profissional
+
 public class ExpRelevante extends ExpProfissional {
 
 	public ExpRelevante(GregorianCalendar data_inicio,GregorianCalendar data_fim, String descricao, String instituicao,String cidade, String estado) {
