@@ -21,6 +21,9 @@ import projeto.view.JCurriculo;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
+import javax.swing.KeyStroke;
+import java.awt.event.KeyEvent;
+import java.awt.event.InputEvent;
 
 public class Main extends JFrame {
 
@@ -58,9 +61,11 @@ public class Main extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenu mnArquivo = new JMenu("Arquivo");
+		mnArquivo.setMnemonic('A');
 		menuBar.add(mnArquivo);
 		
 		JMenuItem mntmNovoCurrculo = new JMenuItem("Novo Curr\u00EDculo");
+		mntmNovoCurrculo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mntmNovoCurrculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JCurriculo jcur = new JCurriculo(new Curriculo("", "", "", "", 0, 0));
@@ -83,6 +88,7 @@ public class Main extends JFrame {
 		mnArquivo.add(mntmSair);
 		
 		JMenu mnAjuda = new JMenu("Ajuda");
+		mnAjuda.setMnemonic('J');
 		menuBar.add(mnAjuda);
 		
 		JMenuItem mntmSobre = new JMenuItem("Sobre");
