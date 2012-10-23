@@ -136,25 +136,6 @@ public class JCurriculo extends JInternalFrame {
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
 		
 		JFormattedTextField regProfissional_forText = new JFormattedTextField();
-		regProfissional_forText.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent e) {
-				boolean isDigit=false;
-				for(char c : "0123456789".toCharArray())
-				{
-					if(c==e.getKeyChar())
-					{
-						isDigit=true;
-						break;
-					}
-				}
-				if(!isDigit)
-				{
-					e.consume();
-					System.out.println("não é dígito!");
-				}
-			}
-		});
 		panel_2.add(regProfissional_forText, "cell 3 0,growx");
 		
 		JPanel panel_6 = new JPanel();
