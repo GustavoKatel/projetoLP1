@@ -12,8 +12,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.JLabel;
+
+import projeto.models.Curriculo;
+import projeto.view.JCurriculo;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.beans.PropertyVetoException;
 
 public class Main extends JFrame {
 
@@ -22,6 +27,7 @@ public class Main extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	private JDesktopPane desktopPane;
 
 	/**
 	 * Launch the application.
@@ -55,7 +61,15 @@ public class Main extends JFrame {
 		JMenuItem mntmNovoCurrculo = new JMenuItem("Novo Curr\u00EDculo");
 		mntmNovoCurrculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//
+				JCurriculo jcur = new JCurriculo(new Curriculo("", "", "", "", 0, 0));
+				Main.this.desktopPane.add(jcur);
+				jcur.setClosable(true);
+				jcur.setVisible(true);
+				try {
+					jcur.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		mnArquivo.add(mntmNovoCurrculo);
@@ -76,7 +90,7 @@ public class Main extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
-		JDesktopPane desktopPane = new JDesktopPane();
+		desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		
