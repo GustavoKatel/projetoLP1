@@ -12,6 +12,9 @@ public class Curriculo {
 	private int cpf;
 	private int reg_profissional;
 	private ArrayList<Titulo> titulos;
+	private ArrayList<ExpDocente> expsDocente;
+	private ArrayList<ExpRelevante> expsRelevante;
+	private ArrayList<Publicacao> publicacoes;
 	
 	//Construtor da classe Currículo.
 	public Curriculo(String nome, String endereco, String telefone,
@@ -24,6 +27,9 @@ public class Curriculo {
 		this.cpf = cpf;
 		this.reg_profissional = reg_profissional;
 		this.titulos = new ArrayList<Titulo>();
+		this.expsDocente = new ArrayList<ExpDocente>();
+		this.expsRelevante = new ArrayList<ExpRelevante>();
+		this.publicacoes = new ArrayList<Publicacao>();
 	}
 	
 	public String getNome() {
