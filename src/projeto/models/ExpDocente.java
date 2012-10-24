@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 /**
  * Classe modelo para Experiencia Docente que herda os atributos de Experiencia Profissional
  * 
- * @author Arthur
+ * @author Arthur, Gustavo, Marcelo, Rodolfo
  *
  */
 public class ExpDocente extends ExpProfissional {

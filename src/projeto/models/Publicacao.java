@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Classe modelo para implementar Publicações 
  * 
- * @author Arthur
+ * @author Arthur, Gustavo, Marcelo, Rodolfo
  *
  */
 public class Publicacao {

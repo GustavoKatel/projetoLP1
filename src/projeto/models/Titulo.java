@@ -3,7 +3,7 @@ package projeto.models;
 /**
  *Classe modelo para Títulos.
  * 
- * @author Arthur
+ * @author Arthur, Gustavo, Marcelo, Rodolfo
  * 
  */
 public class Titulo {

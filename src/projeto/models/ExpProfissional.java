@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 /**
  * Classe abstrata de dados para modelos de Experiencia Profissional Docente e Relevante
  * 
- * @author Arthur
+ * @author Arthur, Gustavo, Marcelo, Rodolfo
  *
  */
 
