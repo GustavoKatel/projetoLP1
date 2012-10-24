@@ -1,6 +1,6 @@
 package projeto.models;
 
-//Classe de dados de manipulaÃ§Ã£o do TÃ­tulo
+//Classe de dados de manipulação do Título
 public class Titulo {
 	private int ano;
 	private String formacao;
@@ -9,7 +9,7 @@ public class Titulo {
 	private String cidade;
 	private String estado;
 	
-//Construtor da classe TÃ­tulo	
+//Construtor da classe título	
 	public Titulo(int ano, String formacao, String curso, String instituicao,
 			String cidade, String estado) {
 		super();
