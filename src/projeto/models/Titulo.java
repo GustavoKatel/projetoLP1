@@ -1,6 +1,11 @@
 package projeto.models;
 
-//Classe de dados de manipulação do Título
+/**
+ *Classe modelo para Títulos.
+ * 
+ * @author Arthur
+ * 
+ */
 public class Titulo {
 	private int ano;
 	private String formacao;
@@ -9,7 +14,16 @@ public class Titulo {
 	private String cidade;
 	private String estado;
 	
-//Construtor da classe título	
+
+	/**
+	 * 
+	 * @param ano ano em que foi concluído o curso
+	 * @param formacao tipo de formação
+	 * @param curso curso no qual foi concluído
+	 * @param instituicao instituição na qual foi concluído o curso
+	 * @param cidade cidade em que foi feito o curso
+	 * @param estado estado a que a cidade pertence
+	 */
 	public Titulo(int ano, String formacao, String curso, String instituicao,
 			String cidade, String estado) {
 		super();

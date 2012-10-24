@@ -1,16 +1,26 @@
 package projeto.models;
 
 import java.util.ArrayList;
-
-//Classe de manipulação de dados de Publicação
+/**
+ * Classe modelo para implementar Publicações 
+ * 
+ * @author Arthur
+ *
+ */
 public class Publicacao {
 	private String titulo;
 	private ArrayList<String> autores;
 	private String evento;
 	private int ano;
 	private String area;
-
-//Construtor da classe Publicação
+	
+	/**
+	 * @param titulo titulo da publicação
+	 * @param evento nome do evento na qual o trabalho foi publicado
+	 * @param area area de interesse relativo ao trabalho
+	 * @param ano ano em que a publicação foi feita
+	 */
+	
 	public Publicacao(String titulo, String evento, String area,
 			int ano) {
 		super();

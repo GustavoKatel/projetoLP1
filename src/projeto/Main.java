@@ -25,18 +25,16 @@ import java.awt.event.InputEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+/**
+ * @author Arthur
+ *
+ */
 public class Main extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;
 
-	/**
-	 * Rodando a aplicação
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,9 +48,7 @@ public class Main extends JFrame {
 		});
 	}
 
-	/**
-	 * Criando o frame
-	 */
+
 	public Main() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 691, 473);
