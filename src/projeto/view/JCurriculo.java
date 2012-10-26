@@ -2,42 +2,100 @@ package projeto.view;
 
 import javax.swing.JInternalFrame;
 
+import projeto.controller.CurriculoController;
 import projeto.models.Curriculo;
+import projeto.models.Titulo;
 import net.miginfocom.swing.MigLayout;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
+
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.CardLayout;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
-import javax.swing.JRadioButton;
 import javax.swing.border.LineBorder;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
 import javax.swing.text.MaskFormatter;
 
 import java.awt.Color;
 import java.text.ParseException;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyVetoException;
+import java.awt.CardLayout;
 
 public class JCurriculo extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Curriculo curriculo;
+	private CurriculoController controller;
 	private JTextField nome_text;
 	private JTextField endereco_text;
+	private JFormattedTextField telefone_forText;
 	private JTextField email_text;
+	private JFormattedTextField cpf_forText;
+	private JFormattedTextField regProfissional_forText;
+	//
+	private JPanel titulos_panel;
+	private ButtonGroup groupTitulos;
 	
-	public JCurriculo(Curriculo curriculo)
+	public JCurriculo()
+	{
+		controller = new CurriculoController();
+		this.curriculo = new Curriculo("", "", "", "", 0, 0);
+		initComponents();
+	}
+	
+	public JCurriculo(int indice)
+	{
+		controller = new CurriculoController();
+		if(indice<controller.getSize())
+			this.curriculo = controller.get(indice);
+		else
+			this.curriculo = new Curriculo("", "", "", "", 0, 0); 
+		initComponents();
+		preenche();
+	}
+	
+	public void preenche()
 	{
 		if(curriculo!=null)
-			this.curriculo = curriculo;
-		else
-			this.curriculo = new Curriculo("", "", "", "", 0, 0);
-		
+		{
+			nome_text.setText(curriculo.getNome());
+			endereco_text.setText(curriculo.getEndereco());
+			telefone_forText.setText(curriculo.getTelefone());
+			email_text.setText(curriculo.getEmail());
+			cpf_forText.setText(String.valueOf(curriculo.getCpf()));
+			regProfissional_forText.setText(String.valueOf(curriculo.getReg_profissional()));
+		}
+		preencheTitulos();
+	}
+	
+	public void preencheTitulos()
+	{
+		if(curriculo!=null)
+		{
+			for(int i=0;i<titulos_panel.getComponentCount();i++)
+				titulos_panel.remove(i);
+			//
+			groupTitulos = new ButtonGroup();
+			for(Titulo ti : curriculo.getTitulos())
+			{
+				JRadioButton rb = new JRadioButton(ti.toString());
+				titulos_panel.add(rb);
+				groupTitulos.add(rb);
+			}
+		}
+	}
+	
+	public void initComponents()
+	{
 		setTitle("Currículo");
 		setResizable(true);
 		setMaximizable(true);
@@ -50,7 +108,7 @@ public class JCurriculo extends JInternalFrame {
 		
 		JPanel panel = new JPanel();
 		scrollPane.setViewportView(panel);
-		panel.setLayout(new MigLayout("", "[grow,right]", "[][][][][grow]"));
+		panel.setLayout(new MigLayout("", "[grow,right]", "[][grow][][][grow]"));
 		
 		JPanel panel_5 = new JPanel();
 		panel_5.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -100,7 +158,7 @@ public class JCurriculo extends JInternalFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		JFormattedTextField telefone_forText = new JFormattedTextField(telefoneFormatter);
+		telefone_forText = new JFormattedTextField(telefoneFormatter);
 		panel_1.add(telefone_forText, "cell 0 0,growx");
 		
 		JLabel lblEmail = new JLabel("Email:");
@@ -125,33 +183,90 @@ public class JCurriculo extends JInternalFrame {
 		}catch (ParseException e) {
 			// TODO: handle exception
 		}
-		JFormattedTextField cpf_forText = new JFormattedTextField(cpfFm);
+		cpf_forText = new JFormattedTextField(cpfFm);
 		cpf_forText.setToolTipText("Digite o cpf (Somente números)");
 		panel_2.add(cpf_forText, "cell 0 0,growx");
 		
 		JLabel lblRegistroProfissional = new JLabel("Registro Profissional:");
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
 		
-		JFormattedTextField regProfissional_forText = new JFormattedTextField();
+		regProfissional_forText = new JFormattedTextField();
 		panel_2.add(regProfissional_forText, "cell 3 0,growx");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(panel_6, "cell 0 1,grow");
-		panel_6.setLayout(new MigLayout("", "[grow,fill]", "[][grow][grow]"));
+		panel_6.setLayout(new MigLayout("", "[grow,fill]", "[][70px:n,grow][grow]"));
 		
 		JLabel lblTitulaes = new JLabel("Titulações");
 		panel_6.add(lblTitulaes, "cell 0 0");
 		
-		JPanel panel_7 = new JPanel();
-		panel_6.add(panel_7, "cell 0 1,grow");
-		panel_7.setLayout(new MigLayout("", "[499px]", "[23px]"));
+		titulos_panel = new JPanel();
+		panel_6.add(titulos_panel, "cell 0 1,grow");
+		titulos_panel.setLayout(new CardLayout(0, 0));
 		
 		JPanel panel_8 = new JPanel();
 		panel_6.add(panel_8, "cell 0 2,alignx left,growy");
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAdicionar = new JButton("Adicionar");
+		btnAdicionar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JTitulo jtitu = new JTitulo(curriculo.getTitulos());
+				jtitu.setVisible(true);
+				jtitu.setClosable(true);
+				jtitu.setMaximizable(false);
+				jtitu.addInternalFrameListener(new InternalFrameListener() {
+					
+					@Override
+					public void internalFrameOpened(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameIconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeiconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeactivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosing(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosed(InternalFrameEvent e) {
+						preencheTitulos();
+					}
+					
+					@Override
+					public void internalFrameActivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				JCurriculo.this.getDesktopPane().add(jtitu);
+				try {
+					jtitu.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		panel_8.add(btnAdicionar);
 		
 		JButton btnEditar = new JButton("Editar");
@@ -245,5 +360,5 @@ public class JCurriculo extends JInternalFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		panel_18.add(btnCancelar);
 	}
-
+	
 }

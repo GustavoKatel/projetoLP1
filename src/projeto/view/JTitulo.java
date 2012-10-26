@@ -2,6 +2,7 @@ package projeto.view;
 
 import java.text.ParseException;
 import java.util.GregorianCalendar;
+import java.util.LinkedList;
 
 import javax.swing.JInternalFrame;
 
@@ -14,30 +15,88 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyVetoException;
 
 public class JTitulo extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	private LinkedList<Titulo> titulos;
 	private Titulo titulo;
 	private JTextField curso_text;
 	private JTextField instituicao_text;
 	private JTextField cidade_text;
+	private JFormattedTextField ano_forText;
+	private JComboBox tipo_combo;
+	private JFormattedTextField uf_forText;
+	//
+	private boolean novo=true;
+	
+	public JTitulo()
+	{
+		initComponents();
+	}
+	
+	public JTitulo(LinkedList<Titulo> titulos)
+	{
+		titulo = new Titulo(GregorianCalendar.getInstance().get(GregorianCalendar.YEAR), 
+				"", "", "", "", "");
+		this.titulos = titulos;
+		novo = true;
+		//
+		initComponents();
+	}
 	
 	/**
-	 * @param titulo
+	 * @param indiceCurriculo
+	 * @param indiceTitulo
 	 */
-	public JTitulo(Titulo titulo)
+	public JTitulo(LinkedList<Titulo> titulos, int indiceTitulo)
 	{
-		if(titulo!=null)
-			this.titulo = titulo;
+		this.titulos = titulos;
+		if(indiceTitulo<titulos.size())
+		{
+			titulo = titulos.get(indiceTitulo);
+			novo=false;
+		}
 		else
-			this.titulo = new Titulo(GregorianCalendar.getInstance().get(GregorianCalendar.YEAR), "", "", "", "", "");
+		{
+			titulo = new Titulo(GregorianCalendar.getInstance().get(GregorianCalendar.YEAR), 
+					"", "", "", "", "");
+			novo=true;
+		}
 		//
+		initComponents();
+	}
+
+	public void atualiza()
+	{
+		titulo.setAno(Integer.parseInt(ano_forText.getText()));
+		titulo.setFormacao(tipo_combo.getSelectedItem().toString());
+		titulo.setCurso(curso_text.getText());
+		titulo.setInstituicao(instituicao_text.getText());
+		titulo.setCidade(cidade_text.getText());
+		titulo.setEstado(uf_forText.getText());
+		if(novo)
+			titulos.add(titulo);
+		try {
+			this.setClosed(true);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void initComponents()
+	{
 		setTitle("Título");
 		setResizable(true);
 		setClosable(true);
-		getContentPane().setLayout(new MigLayout("", "[][grow]", "[][][][][]"));
+		getContentPane().setLayout(new MigLayout("", "[][grow]", "[][][][][][grow]"));
 		
 		JLabel lblAnoDeConcluso = new JLabel("Ano de conclusão:");
 		getContentPane().add(lblAnoDeConcluso, "cell 0 0,alignx right");
@@ -54,7 +113,7 @@ public class JTitulo extends JInternalFrame {
 		}catch (ParseException e) {
 			// TODO: handle exception
 		}
-		JFormattedTextField ano_forText = new JFormattedTextField(anoFm);
+		ano_forText = new JFormattedTextField(anoFm);
 		ano_forText.setToolTipText("Ano (AAAA)");
 		ano_forText.setText(String.valueOf(titulo.getAno()));
 		panel.add(ano_forText, "cell 0 0,growx");
@@ -66,7 +125,7 @@ public class JTitulo extends JInternalFrame {
 		getContentPane().add(panel_1, "cell 1 1,grow");
 		panel_1.setLayout(new MigLayout("", "[130px:n]", "[]"));
 		
-		JComboBox tipo_combo = new JComboBox();
+		tipo_combo = new JComboBox();
 		tipo_combo.setModel(new DefaultComboBoxModel(new String[] {"Bacharelado", "Licenciatura", "Tecnólogo", "Especialização", "Mestrado", "Doutorado"}));
 		panel_1.add(tipo_combo, "cell 0 0,growx");
 		
@@ -117,10 +176,36 @@ public class JTitulo extends JInternalFrame {
 		}catch (ParseException e) {
 			// TODO: handle exception
 		}
-		JFormattedTextField uf_forText = new JFormattedTextField(ufFm);
+		uf_forText = new JFormattedTextField(ufFm);
 		uf_forText.setToolTipText("Unidade Federativa (Somente letras maiúsculas)");
 		uf_forText.setText(titulo.getEstado());
 		panel_4.add(uf_forText, "cell 3 0,growx");
+		
+		JPanel panel_5 = new JPanel();
+		getContentPane().add(panel_5, "cell 1 5,alignx left,growy");
+		panel_5.setLayout(new BoxLayout(panel_5, BoxLayout.X_AXIS));
+		
+		JButton btnNewButton = new JButton("Salvar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//
+				atualiza();
+			}
+		});
+		panel_5.add(btnNewButton);
+		
+		JButton btnFechar = new JButton("Cancelar");
+		btnFechar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					JTitulo.this.setClosed(true);
+				} catch (PropertyVetoException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		});
+		panel_5.add(btnFechar);
 	}
 
 }

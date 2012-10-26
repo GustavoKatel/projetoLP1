@@ -3,7 +3,6 @@ package projeto.models;
 import java.util.LinkedList;
 
 //Classe de manipulação de dados de Publicação
-import java.util.ArrayList;
 /**
  * Classe modelo para implementar Publicações 
  * 

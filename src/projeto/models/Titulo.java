@@ -1,7 +1,7 @@
 package projeto.models;
 
 /**
- *Classe modelo para Títulos.
+ *Classe modelo para Tï¿½tulos.
  * 
  * @author Arthur, Gustavo, Marcelo, Rodolfo
  * 
@@ -17,10 +17,10 @@ public class Titulo {
 
 	/**
 	 * 
-	 * @param ano ano em que foi concluído o curso
-	 * @param formacao tipo de formação
-	 * @param curso curso no qual foi concluído
-	 * @param instituicao instituição na qual foi concluído o curso
+	 * @param ano ano em que foi concluï¿½do o curso
+	 * @param formacao tipo de formaï¿½ï¿½o
+	 * @param curso curso no qual foi concluï¿½do
+	 * @param instituicao instituiï¿½ï¿½o na qual foi concluï¿½do o curso
 	 * @param cidade cidade em que foi feito o curso
 	 * @param estado estado a que a cidade pertence
 	 */
@@ -81,6 +81,11 @@ public class Titulo {
 
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	
+	public String toString()
+	{
+		return "("+ano+") "+formacao+" em "+curso+". "+instituicao+". "+cidade+", "+estado+".";
 	}
 	
 	

@@ -13,12 +13,12 @@ import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.JLabel;
 
-import projeto.models.Curriculo;
 import projeto.view.JCurriculo;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
+
 import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
@@ -47,6 +47,7 @@ public class Main extends JFrame {
 				try {
 					Main frame = new Main();
 					frame.setVisible(true);
+					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -72,10 +73,11 @@ public class Main extends JFrame {
 		mntmNovoCurrculo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
 		mntmNovoCurrculo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				JCurriculo jcur = new JCurriculo(new Curriculo("", "", "", "", 0, 0));
+				JCurriculo jcur = new JCurriculo();
 				Main.this.desktopPane.add(jcur);
 				jcur.setClosable(true);
 				jcur.setVisible(true);
+				jcur.setMaximizable(false);
 				try {
 					jcur.setMaximum(true);
 				} catch (PropertyVetoException e) {
