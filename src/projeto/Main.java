@@ -26,7 +26,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 /**
- * @author Arthur
+ * @author Arthur, Gustavo, C.Marcelo, Rodolfo.
  *
  */
 public class Main extends JFrame {
