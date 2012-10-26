@@ -2,7 +2,13 @@ package projeto.models;
 
 import java.util.GregorianCalendar;
 
-//Classe de abstrata de dados de Experiencia Profissional
+/**
+ * Classe abstrata de dados para modelos de Experiencia Profissional Docente e Relevante
+ * 
+ * @author Arthur, Gustavo, Marcelo, Rodolfo
+ *
+ */
+
 public abstract class ExpProfissional {
 	private GregorianCalendar data_inicio;
 	private GregorianCalendar data_fim;
@@ -10,8 +16,16 @@ public abstract class ExpProfissional {
 	private String instituicao;
 	private String cidade;
 	private String estado;
+		
+	/**
+	 * @param data_inicio data do início no emprego
+	 * @param data_fim data final do funcionario no emprego
+	 * @param descricao descrição da atividade exercida no emprego
+	 * @param instituicao empresa na qual o funcionario trabalhava
+	 * @param cidade cidade no qual a empresa se localiza
+	 * @param estado estado referente a cidade
+	 */
 	
-//Construtor da classe Experiencia Profissional
 	public ExpProfissional(GregorianCalendar data_inicio,
 			GregorianCalendar data_fim, String descricao, String instituicao,
 			String cidade, String estado) {

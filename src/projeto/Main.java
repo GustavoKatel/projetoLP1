@@ -23,7 +23,12 @@ import javax.swing.KeyStroke;
 import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
+/**
+ * @author Arthur
+ *
+ */
 public class Main extends JFrame {
 
 	/**
@@ -100,11 +105,12 @@ public class Main extends JFrame {
 		desktopPane = new JDesktopPane();
 		desktopPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(desktopPane, BorderLayout.CENTER);
+		desktopPane.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblCadastroDeCurrculos = new JLabel("Cadastro de Curriculos");
-		lblCadastroDeCurrculos.setLabelFor(desktopPane);
+		lblCadastroDeCurrculos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCadastroDeCurrculos.setFont(new Font("Modern No. 20", Font.PLAIN, 29));
-		lblCadastroDeCurrculos.setBounds(224, 187, 329, 34);
+		lblCadastroDeCurrculos.setBounds(224, 187, 414, 32);
 		desktopPane.add(lblCadastroDeCurrculos);
 	}
 }

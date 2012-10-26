@@ -24,9 +24,6 @@ import java.awt.event.KeyEvent;
 
 public class JCurriculo extends JInternalFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Curriculo curriculo;

@@ -17,9 +17,6 @@ import javax.swing.text.MaskFormatter;
 
 public class JTitulo extends JInternalFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private Titulo titulo;
@@ -27,6 +24,9 @@ public class JTitulo extends JInternalFrame {
 	private JTextField instituicao_text;
 	private JTextField cidade_text;
 	
+	/**
+	 * @param titulo
+	 */
 	public JTitulo(Titulo titulo)
 	{
 		if(titulo!=null)
