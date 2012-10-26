@@ -1,6 +1,6 @@
 package projeto.models;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 //Classe de dados para manipulação de Currículo
 public class Curriculo {
@@ -11,10 +11,10 @@ public class Curriculo {
 	private String email;
 	private int cpf;
 	private int reg_profissional;
-	private ArrayList<Titulo> titulos;
-	private ArrayList<ExpDocente> expsDocente;
-	private ArrayList<ExpRelevante> expsRelevante;
-	private ArrayList<Publicacao> publicacoes;
+	private LinkedList<Titulo> titulos;
+	private LinkedList<ExpDocente> expsDocente;
+	private LinkedList<ExpRelevante> expsRelevante;
+	private LinkedList<Publicacao> publicacoes;
 	
 	//Construtor da classe Currículo.
 	public Curriculo(String nome, String endereco, String telefone,
@@ -26,10 +26,10 @@ public class Curriculo {
 		this.email = email;
 		this.cpf = cpf;
 		this.reg_profissional = reg_profissional;
-		this.titulos = new ArrayList<Titulo>();
-		this.expsDocente = new ArrayList<ExpDocente>();
-		this.expsRelevante = new ArrayList<ExpRelevante>();
-		this.publicacoes = new ArrayList<Publicacao>();
+		this.titulos = new LinkedList<Titulo>();
+		this.expsDocente = new LinkedList<ExpDocente>();
+		this.expsRelevante = new LinkedList<ExpRelevante>();
+		this.publicacoes = new LinkedList<Publicacao>();
 	}
 	
 	public String getNome() {
@@ -68,7 +68,7 @@ public class Curriculo {
 	public void setReg_profissional(int reg_profissional) {
 		this.reg_profissional = reg_profissional;
 	}
-	public ArrayList<Titulo> getTitulos(){
+	public LinkedList<Titulo> getTitulos(){
 		return titulos;		
 	}
 	

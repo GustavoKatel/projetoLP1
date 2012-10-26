@@ -102,8 +102,9 @@ public class Main extends JFrame {
 		contentPane.add(desktopPane, BorderLayout.CENTER);
 		
 		JLabel lblCadastroDeCurrculos = new JLabel("Cadastro de Curriculos");
+		lblCadastroDeCurrculos.setLabelFor(desktopPane);
 		lblCadastroDeCurrculos.setFont(new Font("Modern No. 20", Font.PLAIN, 29));
-		lblCadastroDeCurrculos.setBounds(224, 187, 414, 32);
+		lblCadastroDeCurrculos.setBounds(224, 187, 329, 34);
 		desktopPane.add(lblCadastroDeCurrculos);
 	}
 }

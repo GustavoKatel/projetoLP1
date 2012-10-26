@@ -1,11 +1,11 @@
 package projeto.models;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 //Classe de manipulação de dados de Publicação
 public class Publicacao {
 	private String titulo;
-	private ArrayList<String> autores;
+	private LinkedList<String> autores;
 	private String evento;
 	private int ano;
 	private String area;
@@ -15,7 +15,7 @@ public class Publicacao {
 			int ano) {
 		super();
 		this.titulo = titulo;
-		this.autores = new ArrayList<String>();
+		this.autores = new LinkedList<String>();
 		this.evento = evento;
 		this.ano = ano;
 	}
@@ -35,7 +35,7 @@ public class Publicacao {
 		this.titulo = titulo;
 	}
 
-	public ArrayList<String> getAutores() {
+	public LinkedList<String> getAutores() {
 		return autores;
 	}
 
