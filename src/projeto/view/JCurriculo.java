@@ -270,9 +270,87 @@ public class JCurriculo extends JInternalFrame {
 		panel_8.add(btnAdicionar);
 		
 		JButton btnEditar = new JButton("Editar");
+		btnEditar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(int i=0;i<titulos_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)titulos_panel.getComponent(i)).isSelected())
+					{
+						JTitulo jtitu = new JTitulo(curriculo.getTitulos(), i);
+						jtitu.setVisible(true);
+						jtitu.setClosable(true);
+						jtitu.setMaximizable(false);
+						jtitu.addInternalFrameListener(new InternalFrameListener() {
+							
+							@Override
+							public void internalFrameOpened(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void internalFrameIconified(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void internalFrameDeiconified(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void internalFrameDeactivated(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void internalFrameClosing(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+							
+							@Override
+							public void internalFrameClosed(InternalFrameEvent e) {
+								preencheTitulos();
+							}
+							
+							@Override
+							public void internalFrameActivated(InternalFrameEvent e) {
+								// TODO Auto-generated method stub
+								
+							}
+						});
+						JCurriculo.this.getDesktopPane().add(jtitu);
+						try {
+							jtitu.setMaximum(true);
+						} catch (PropertyVetoException e) {
+							e.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+		});
 		panel_8.add(btnEditar);
 		
 		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(int i=0;i<titulos_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)titulos_panel.getComponent(i)).isSelected())
+					{
+						curriculo.getTitulos().remove(i);
+						titulos_panel.remove(i);
+						titulos_panel.repaint();
+						break;
+					}
+				}
+			}
+		});
 		panel_8.add(btnExcluir);
 		
 		JPanel panel_9 = new JPanel();
