@@ -203,7 +203,7 @@ public class JCurriculo extends JInternalFrame {
 		
 		titulos_panel = new JPanel();
 		panel_6.add(titulos_panel, "cell 0 1,grow");
-		titulos_panel.setLayout(new CardLayout(0, 0));
+		this.titulos_panel.setLayout(new MigLayout("", "[]", "[]"));
 		
 		JPanel panel_8 = new JPanel();
 		panel_6.add(panel_8, "cell 0 2,alignx left,growy");

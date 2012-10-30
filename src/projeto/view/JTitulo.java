@@ -168,15 +168,7 @@ public class JTitulo extends JInternalFrame {
 		JLabel lblUf = new JLabel("UF:");
 		panel_4.add(lblUf, "cell 2 0,alignx trailing");
 		
-		MaskFormatter ufFm = null;
-		try
-		{
-			ufFm = new MaskFormatter("##");
-			ufFm.setValidCharacters("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-		}catch (ParseException e) {
-			// TODO: handle exception
-		}
-		uf_forText = new JFormattedTextField(ufFm);
+		uf_forText = new JFormattedTextField();
 		uf_forText.setToolTipText("Unidade Federativa (Somente letras maiúsculas)");
 		uf_forText.setText(titulo.getEstado());
 		panel_4.add(uf_forText, "cell 3 0,growx");
