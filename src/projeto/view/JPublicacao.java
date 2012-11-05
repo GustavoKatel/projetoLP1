@@ -80,7 +80,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblAutores, "cell 0 1,alignx trailing");
 		
 		textField_2 = new JTextField();
-		textField.setText(publicacao.getAutores());
+		textField_2.setText(publicacao.getAutores());
 		getContentPane().add(textField_2, "cell 1 1,growx");
 		textField_2.setColumns(10);
 		
@@ -88,7 +88,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblEvento, "cell 0 2,alignx trailing");
 		
 		textField_1 = new JTextField();
-		textField.setText(publicacao.getEvento());
+		textField_1.setText(publicacao.getEvento());
 		getContentPane().add(textField_1, "cell 1 2,growx");
 		textField_1.setColumns(10);
 		
@@ -96,7 +96,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblAnoDaPublicao, "cell 0 3,alignx trailing");
 		
 		textField_3 = new JTextField();
-		textField.setText(String.valueOf(publicacao.getAno()));
+		textField_3.setText(String.valueOf(publicacao.getAno()));
 		getContentPane().add(textField_3, "cell 1 3,growx");
 		textField_3.setColumns(10);
 		
