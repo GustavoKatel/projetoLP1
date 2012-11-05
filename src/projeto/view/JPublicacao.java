@@ -1,15 +1,11 @@
 package projeto.view;
 
-import javax.sound.midi.ControllerEventListener;
 import javax.swing.JInternalFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import projeto.models.Publicacao;
-import projeto.models.Titulo;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.GregorianCalendar;
@@ -33,10 +29,13 @@ public class JPublicacao extends JInternalFrame {
 	 * Create the frame.
 	 */
 	boolean novo = true;
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public JPublicacao(LinkedList<Publicacao> publicacoes) {
 		initComponents();
 		this.publicacoes = publicacoes;
-		this.publicacao = new Publicacao("","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
+		this.publicacao = new Publicacao("","","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
 	}
 	public JPublicacao(LinkedList<Publicacao> publicacoes, int indicePublicacao)
 	{
@@ -49,7 +48,7 @@ public class JPublicacao extends JInternalFrame {
 		}
 		else
 		{
-			publicacao = new Publicacao("","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
+			publicacao = new Publicacao("","","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
 			novo=true;
 		}
 	}
@@ -72,6 +71,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblTtuloDaPublicao, "cell 0 0,alignx trailing");
 		
 		textField = new JTextField();
+		textField.setText(publicacao.getTitulo());
 		getContentPane().add(textField, "cell 1 0,growx");
 		textField.setColumns(10);
 		
@@ -79,6 +79,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblAutores, "cell 0 1,alignx trailing");
 		
 		textField_2 = new JTextField();
+		textField.setText(publicacao.getAutores());
 		getContentPane().add(textField_2, "cell 1 1,growx");
 		textField_2.setColumns(10);
 		
@@ -86,6 +87,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblEvento, "cell 0 2,alignx trailing");
 		
 		textField_1 = new JTextField();
+		textField.setText(publicacao.getEvento());
 		getContentPane().add(textField_1, "cell 1 2,growx");
 		textField_1.setColumns(10);
 		
@@ -93,6 +95,7 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(lblAnoDaPublicao, "cell 0 3,alignx trailing");
 		
 		textField_3 = new JTextField();
+		textField.setText(String.valueOf(publicacao.getAno()));
 		getContentPane().add(textField_3, "cell 1 3,growx");
 		textField_3.setColumns(10);
 		
