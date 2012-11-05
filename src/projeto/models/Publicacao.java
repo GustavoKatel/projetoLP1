@@ -1,7 +1,5 @@
 package projeto.models;
 
-import java.util.LinkedList;
-
 //Classe de manipulação de dados de Publicação
 /**
  * Classe modelo para implementar Publicações 
@@ -11,7 +9,7 @@ import java.util.LinkedList;
  */
 public class Publicacao {
 	private String titulo;
-	private LinkedList<String> autores;
+	private String autores;
 	private String evento;
 	private int ano;
 	private String area;
@@ -23,11 +21,11 @@ public class Publicacao {
 	 * @param ano ano em que a publica��o foi feita
 	 */
 	
-	public Publicacao(String titulo, String evento, String area,
+	public Publicacao(String titulo, String autores, String evento, String area,
 			int ano) {
 		super();
 		this.titulo = titulo;
-		this.autores = new LinkedList<String>();
+		this.autores = autores;
 		this.evento = evento;
 		this.ano = ano;
 	}
@@ -47,14 +45,12 @@ public class Publicacao {
 		this.titulo = titulo;
 	}
 
-	public LinkedList<String> getAutores() {
+	public String getAutores() {
 		return autores;
 	}
 
-	public void addAutor(String autor) {
-		if (autores != null){
-			autores.add(autor);
-		}
+	public void setAutores(String autores) {
+		this.autores = autores;
 	}
 
 	public String getEvento() {
