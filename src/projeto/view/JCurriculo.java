@@ -379,6 +379,63 @@ public class JCurriculo extends JInternalFrame {
 		panel_11.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAdicionar_1 = new JButton("Adicionar");
+		btnAdicionar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JExpDocente jexpDoc = new JExpDocente(curriculo.getExpsDocente());
+				jexpDoc.setVisible(true);
+				jexpDoc.setClosable(true);
+				jexpDoc.setMaximizable(false);
+				jexpDoc.addInternalFrameListener(new InternalFrameListener() {
+					
+					@Override
+					public void internalFrameOpened(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameIconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeiconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeactivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosing(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosed(InternalFrameEvent e) {
+						preencheTitulos();
+					}
+					
+					@Override
+					public void internalFrameActivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				JCurriculo.this.getDesktopPane().add(jexpDoc);
+				try {
+					jexpDoc.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel_11.add(btnAdicionar_1);
 		
 		JButton btnEditar_1 = new JButton("Editar");
@@ -429,6 +486,63 @@ public class JCurriculo extends JInternalFrame {
 		panel_17.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAdicionar_3 = new JButton("Adicionar");
+		btnAdicionar_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JPublicacao jpubl = new JPublicacao(curriculo.getPublicacoes());
+				jpubl.setVisible(true);
+				jpubl.setClosable(true);
+				jpubl.setMaximizable(false);
+				jpubl.addInternalFrameListener(new InternalFrameListener() {
+					
+					@Override
+					public void internalFrameOpened(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameIconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeiconified(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameDeactivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosing(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+					@Override
+					public void internalFrameClosed(InternalFrameEvent e) {
+						preencheTitulos();
+					}
+					
+					@Override
+					public void internalFrameActivated(InternalFrameEvent e) {
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				JCurriculo.this.getDesktopPane().add(jpubl);
+				try {
+					jpubl.setMaximum(true);
+				} catch (PropertyVetoException e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		panel_17.add(btnAdicionar_3);
 		
 		JButton btnEditar_3 = new JButton("Editar");
