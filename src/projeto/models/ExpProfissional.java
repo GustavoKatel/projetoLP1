@@ -1,7 +1,5 @@
 package projeto.models;
 
-import java.util.GregorianCalendar;
-
 /**
  * Classe abstrata de dados para modelos de Experiencia Profissional Docente e Relevante
  * 
@@ -10,24 +8,24 @@ import java.util.GregorianCalendar;
  */
 
 public abstract class ExpProfissional {
-	private GregorianCalendar data_inicio;
-	private GregorianCalendar data_fim;
+	private int data_inicio;
+	private int data_fim;
 	private String descricao;
 	private String instituicao;
 	private String cidade;
 	private String estado;
 		
 	/**
-	 * @param data_inicio data do início no emprego
+	 * @param data_inicio data do inï¿½cio no emprego
 	 * @param data_fim data final do funcionario no emprego
-	 * @param descricao descrição da atividade exercida no emprego
+	 * @param descricao descriï¿½ï¿½o da atividade exercida no emprego
 	 * @param instituicao empresa na qual o funcionario trabalhava
 	 * @param cidade cidade no qual a empresa se localiza
 	 * @param estado estado referente a cidade
 	 */
 	
-	public ExpProfissional(GregorianCalendar data_inicio,
-			GregorianCalendar data_fim, String descricao, String instituicao,
+	public ExpProfissional(int data_inicio,
+			int data_fim, String descricao, String instituicao,
 			String cidade, String estado) {
 		super();
 		this.data_inicio = data_inicio;
@@ -39,22 +37,22 @@ public abstract class ExpProfissional {
 	}
 
 
-	public GregorianCalendar getData_inicio() {
+	public int getData_inicio() {
 		return data_inicio;
 	}
 
 
-	public void setData_inicio(GregorianCalendar data_inicio) {
+	public void setData_inicio(int data_inicio) {
 		this.data_inicio = data_inicio;
 	}
 
 
-	public GregorianCalendar getData_fim() {
+	public int getData_fim() {
 		return data_fim;
 	}
 
 
-	public void setData_fim(GregorianCalendar data_fim) {
+	public void setData_fim(int data_fim) {
 		this.data_fim = data_fim;
 	}
 

@@ -5,6 +5,9 @@ import java.util.LinkedList;
 //Classe de dados para manipulação de Currículo
 public class Curriculo {
 	
+	private static int ID_COUNT=0;
+	
+	private int id;
 	private String nome;
 	private String endereco;
 	private String telefone;
@@ -20,6 +23,7 @@ public class Curriculo {
 	public Curriculo(String nome, String endereco, String telefone,
 			String email, int cpf, int reg_profissional) {
 		super();
+		this.id = ID_COUNT++;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.telefone = telefone;
@@ -32,6 +36,10 @@ public class Curriculo {
 		this.publicacoes = new LinkedList<Publicacao>();
 	}
 	
+	public int getId()
+	{
+		return id;
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -77,4 +85,15 @@ public class Curriculo {
 			titulos.add(titulo);
 		}
 	}
+
+	public void setTitulos(LinkedList<Titulo> titulos)
+	{
+		this.titulos = titulos;
+	}
+	
+	public static void setLastId(int id)
+	{
+		ID_COUNT=id+1;
+	}
+	
 }

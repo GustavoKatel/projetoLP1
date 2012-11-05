@@ -36,11 +36,9 @@ public class JTitulo extends JInternalFrame {
 	//
 	private boolean novo=true;
 	
-	public JTitulo()
-	{
-		initComponents();
-	}
-	
+	/**
+	 * @wbp.parser.constructor
+	 */
 	public JTitulo(LinkedList<Titulo> titulos)
 	{
 		titulo = new Titulo(GregorianCalendar.getInstance().get(GregorianCalendar.YEAR), 
@@ -90,7 +88,7 @@ public class JTitulo extends JInternalFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void initComponents()
 	{
 		setTitle("Título");

@@ -1,8 +1,6 @@
 package projeto.controller;
 
 import java.util.LinkedList;
-import java.util.List;
-
 import projeto.models.Curriculo;
 
 public class CurriculoController {
@@ -19,8 +17,23 @@ public class CurriculoController {
 		return curriculos.add(obj);
 	}
 
-	public boolean add(List<Curriculo> collection) {
-		return curriculos.addAll(collection);
+	public boolean uptade(Curriculo curriculo)
+	{
+		for(Curriculo c:curriculos)
+		{
+			if(c.getId()==curriculo.getId())
+			{
+				c.setNome(curriculo.getNome());
+				c.setCpf(curriculo.getCpf());
+				c.setEmail(curriculo.getEmail());
+				c.setEndereco(curriculo.getEndereco());
+				c.setReg_profissional(curriculo.getReg_profissional());
+				c.setTelefone(curriculo.getTelefone());
+				c.setTitulos(curriculo.getTitulos());
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public Curriculo get(int i) {
@@ -36,15 +49,11 @@ public class CurriculoController {
 	
 	public boolean save(String filename) {
 		/*
-		 * 1 - salva todos os tipos primitivos
-		 * 2 - salva a quantidade de titulos
-		 * 3 - salva todos os titulos
-		 * 4 - salva a quantidade de exps_docentes
-		 * 5 - salva todas as exps_docentes
-		 * 6 - salva a quantidade de exps_relevante
-		 * 7 - salva todas as exps_relevantes
-		 * 8 - salva a quantidade de publicações
-		 * 9 - salva todas as publicações 
+		 * 1 - salva todos os currículos em um arquivo
+		 * 2 - salva todos os títulos em um arquivo
+		 * 3 - salva todos as exps_docentes em um arquivo
+		 * 4 - salva todas as exps_relevantes em um arquivo
+		 * 5 - salva todas as publicações em um arquivo 
 		 * 
 		 */
 		return false;
@@ -52,15 +61,11 @@ public class CurriculoController {
 
 	public boolean load(String filename) {
 		/*
-		 * 1 - carrega todos os tipos primitivos
-		 * 2 - carrega a quantidade de titulos
+		 * 1 - carrega todos os currículos
 		 * 3 - carrega todos os titulos
-		 * 4 - carrega a quantidade de exps_docentes
-		 * 5 - carrega todas as exps_docentes
-		 * 6 - carrega a quantidade de exps_relevante
-		 * 7 - carrega todas as exps_relevantes
-		 * 8 - carrega a quantidade de publicações
-		 * 9 - carrega todas as publicações 
+		 * 4 - carrega todas as exps_docentes
+		 * 5 - carrega todas as exps_relevantes
+		 * 6 - carrega todas as publicações 
 		 * 
 		 */
 		return false;

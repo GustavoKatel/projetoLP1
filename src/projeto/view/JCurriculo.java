@@ -27,7 +27,7 @@ import java.text.ParseException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyVetoException;
-import java.awt.CardLayout;
+import javax.swing.BoxLayout;
 
 public class JCurriculo extends JInternalFrame {
 
@@ -44,21 +44,22 @@ public class JCurriculo extends JInternalFrame {
 	//
 	private JPanel titulos_panel;
 	private ButtonGroup groupTitulos;
+	//
+	private boolean novo=true;
 	
 	public JCurriculo()
 	{
 		controller = new CurriculoController();
 		this.curriculo = new Curriculo("", "", "", "", 0, 0);
+		novo=true;
 		initComponents();
 	}
 	
-	public JCurriculo(int indice)
+	public JCurriculo(Curriculo curriculo)
 	{
 		controller = new CurriculoController();
-		if(indice<controller.getSize())
-			this.curriculo = controller.get(indice);
-		else
-			this.curriculo = new Curriculo("", "", "", "", 0, 0); 
+		this.curriculo = curriculo;
+		novo=false;
 		initComponents();
 		preenche();
 	}
@@ -92,6 +93,14 @@ public class JCurriculo extends JInternalFrame {
 				groupTitulos.add(rb);
 			}
 		}
+	}
+	
+	public void salvar()
+	{
+		if(novo)
+			controller.add(curriculo);
+		else
+			controller.uptade(curriculo);
 	}
 	
 	public void initComponents()
@@ -203,7 +212,7 @@ public class JCurriculo extends JInternalFrame {
 		
 		titulos_panel = new JPanel();
 		panel_6.add(titulos_panel, "cell 0 1,grow");
-		this.titulos_panel.setLayout(new MigLayout("", "[]", "[]"));
+		this.titulos_panel.setLayout(new BoxLayout(this.titulos_panel, BoxLayout.Y_AXIS));
 		
 		JPanel panel_8 = new JPanel();
 		panel_6.add(panel_8, "cell 0 2,alignx left,growy");
@@ -433,9 +442,19 @@ public class JCurriculo extends JInternalFrame {
 		panel_18.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				salvar();
+			}
+		});
 		panel_18.add(btnSalvar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JCurriculo.this.setVisible(false);
+			}
+		});
 		panel_18.add(btnCancelar);
 	}
 	
