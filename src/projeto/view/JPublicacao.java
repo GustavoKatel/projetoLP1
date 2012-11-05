@@ -33,9 +33,9 @@ public class JPublicacao extends JInternalFrame {
 	 * @wbp.parser.constructor
 	 */
 	public JPublicacao(LinkedList<Publicacao> publicacoes) {
-		initComponents();
 		this.publicacoes = publicacoes;
 		this.publicacao = new Publicacao("","","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
+		initComponents();
 	}
 	public JPublicacao(LinkedList<Publicacao> publicacoes, int indicePublicacao)
 	{
@@ -51,6 +51,7 @@ public class JPublicacao extends JInternalFrame {
 			publicacao = new Publicacao("","","","",GregorianCalendar.getInstance().get(GregorianCalendar.YEAR));
 			novo=true;
 		}
+		initComponents();
 	}
 	public void salvar(){
 		if(novo)
