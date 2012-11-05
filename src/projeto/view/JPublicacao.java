@@ -56,8 +56,6 @@ public class JPublicacao extends JInternalFrame {
 	public void salvar(){
 		if(novo)
 			this.publicacoes.add(this.publicacao);
-		//else
-			//this.publicacoes.
 	}
 	
 
