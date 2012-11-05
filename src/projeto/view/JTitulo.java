@@ -34,7 +34,7 @@ public class JTitulo extends JInternalFrame {
 	private JComboBox tipo_combo;
 	private JFormattedTextField uf_forText;
 	//
-	private boolean novo=true;
+	private boolean novo=false;
 	
 	/**
 	 * @wbp.parser.constructor

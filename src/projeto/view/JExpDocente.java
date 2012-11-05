@@ -1,20 +1,21 @@
 package projeto.view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JInternalFrame;
-import java.awt.GridLayout;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
-
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-
 import projeto.models.ExpDocente;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JExpDocente extends JInternalFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -49,6 +50,12 @@ public class JExpDocente extends JInternalFrame {
 			novo=true;
 			}
 		initComponents();
+	}
+	
+	public void salvar()
+	{
+		if(novo)
+			exps.add(exp);
 	}
 	
 	public void initComponents()
@@ -106,6 +113,11 @@ public class JExpDocente extends JInternalFrame {
 		textField_5.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				salvar();
+			}
+		});
 		getContentPane().add(btnSalvar, "cell 0 5,alignx right");
 		
 		JButton btnCancelar = new JButton("Cancelar");

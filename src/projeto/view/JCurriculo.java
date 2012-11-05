@@ -4,6 +4,7 @@ import javax.swing.JInternalFrame;
 
 import projeto.controller.CurriculoController;
 import projeto.models.Curriculo;
+import projeto.models.ExpDocente;
 import projeto.models.Titulo;
 import net.miginfocom.swing.MigLayout;
 
@@ -43,7 +44,10 @@ public class JCurriculo extends JInternalFrame {
 	private JFormattedTextField regProfissional_forText;
 	//
 	private JPanel titulos_panel;
-	private ButtonGroup groupTitulos;
+	private ButtonGroup TitulosGroup;
+	//
+	private JPanel expDocente_panel;
+	private ButtonGroup expDocenteGroup;
 	//
 	private boolean novo=true;
 	
@@ -76,21 +80,39 @@ public class JCurriculo extends JInternalFrame {
 			regProfissional_forText.setText(String.valueOf(curriculo.getReg_profissional()));
 		}
 		preencheTitulos();
+		preencheExpDocente();
 	}
 	
 	public void preencheTitulos()
 	{
 		if(curriculo!=null)
 		{
-			for(int i=0;i<titulos_panel.getComponentCount();i++)
-				titulos_panel.remove(i);
+			titulos_panel.removeAll();
 			//
-			groupTitulos = new ButtonGroup();
+			TitulosGroup = new ButtonGroup();
 			for(Titulo ti : curriculo.getTitulos())
 			{
 				JRadioButton rb = new JRadioButton(ti.toString());
 				titulos_panel.add(rb);
-				groupTitulos.add(rb);
+				TitulosGroup.add(rb);
+				System.out.println("linked: "+curriculo.getTitulos().size()+", comps: "+titulos_panel.getComponentCount()+", group: "+TitulosGroup.getButtonCount());
+			}
+		}
+	}
+	
+	public void preencheExpDocente()
+	{
+		if(curriculo!=null)
+		{
+			for(int i=0;i<expDocente_panel.getComponentCount();i++)
+				expDocente_panel.remove(i);
+			//
+			expDocenteGroup = new ButtonGroup();
+			for(ExpDocente expDoc : curriculo.getExpsDocente())
+			{
+				JRadioButton rb = new JRadioButton(expDoc.toString());
+				expDocente_panel.add(rb);
+				expDocenteGroup.add(rb);
 			}
 		}
 	}
@@ -218,9 +240,16 @@ public class JCurriculo extends JInternalFrame {
 		panel_6.add(panel_8, "cell 0 2,alignx left,growy");
 		panel_8.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnAdicionar = new JButton("Adicionar");
+		JButton btnAdicionar = new JButton("Adicionar"); //Botão adicionar (Titulo)
 		btnAdicionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				/*
+				 * Cria uma nova janela JTitulo (extends JInternalFrame)
+				 * Define os atributos
+				 * Adiciona um InternalFrameListener (Escuta), responsável por tratar operações relacionadas à janela.
+				 * Definimos apenas instruções para quando a janela for fechada (internalFrameClosed).
+				 * É chamado o método preencheTitulos, responsável por atualizar os RadioButton's dentro do panel. 
+				 */
 				JTitulo jtitu = new JTitulo(curriculo.getTitulos());
 				jtitu.setVisible(true);
 				jtitu.setClosable(true);
@@ -228,34 +257,19 @@ public class JCurriculo extends JInternalFrame {
 				jtitu.addInternalFrameListener(new InternalFrameListener() {
 					
 					@Override
-					public void internalFrameOpened(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameOpened(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameIconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameIconified(InternalFrameEvent e) {	}
 					
 					@Override
-					public void internalFrameDeiconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeiconified(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameDeactivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeactivated(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameClosing(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameClosing(InternalFrameEvent e) {}
 					
 					@Override
 					public void internalFrameClosed(InternalFrameEvent e) {
@@ -263,10 +277,7 @@ public class JCurriculo extends JInternalFrame {
 					}
 					
 					@Override
-					public void internalFrameActivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameActivated(InternalFrameEvent e) {}
 				});
 				JCurriculo.this.getDesktopPane().add(jtitu);
 				try {
@@ -292,34 +303,19 @@ public class JCurriculo extends JInternalFrame {
 						jtitu.addInternalFrameListener(new InternalFrameListener() {
 							
 							@Override
-							public void internalFrameOpened(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameOpened(InternalFrameEvent e) {}
 							
 							@Override
-							public void internalFrameIconified(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameIconified(InternalFrameEvent e) {}
 							
 							@Override
-							public void internalFrameDeiconified(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameDeiconified(InternalFrameEvent e) {}
 							
 							@Override
-							public void internalFrameDeactivated(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameDeactivated(InternalFrameEvent e) {}
 							
 							@Override
-							public void internalFrameClosing(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameClosing(InternalFrameEvent e) {}
 							
 							@Override
 							public void internalFrameClosed(InternalFrameEvent e) {
@@ -327,10 +323,7 @@ public class JCurriculo extends JInternalFrame {
 							}
 							
 							@Override
-							public void internalFrameActivated(InternalFrameEvent e) {
-								// TODO Auto-generated method stub
-								
-							}
+							public void internalFrameActivated(InternalFrameEvent e) {}
 						});
 						JCurriculo.this.getDesktopPane().add(jtitu);
 						try {
@@ -365,14 +358,14 @@ public class JCurriculo extends JInternalFrame {
 		JPanel panel_9 = new JPanel();
 		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(panel_9, "cell 0 2,grow");
-		panel_9.setLayout(new MigLayout("", "[grow]", "[][][]"));
+		panel_9.setLayout(new MigLayout("", "[grow]", "[][70px:n,grow][]"));
 		
 		JLabel lblExperinaProficionalDoente = new JLabel("Experiência Profissional Docente");
 		panel_9.add(lblExperinaProficionalDoente, "cell 0 0");
 		
-		JPanel panel_10 = new JPanel();
-		panel_9.add(panel_10, "cell 0 1,grow");
-		panel_10.setLayout(new MigLayout("", "[]", "[]"));
+		expDocente_panel = new JPanel();
+		panel_9.add(expDocente_panel, "cell 0 1,grow");
+		expDocente_panel.setLayout(new BoxLayout(expDocente_panel, BoxLayout.Y_AXIS));
 		
 		JPanel panel_11 = new JPanel();
 		panel_9.add(panel_11, "cell 0 2,grow");
@@ -388,45 +381,27 @@ public class JCurriculo extends JInternalFrame {
 				jexpDoc.addInternalFrameListener(new InternalFrameListener() {
 					
 					@Override
-					public void internalFrameOpened(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameOpened(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameIconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameIconified(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameDeiconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeiconified(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameDeactivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeactivated(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameClosing(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameClosing(InternalFrameEvent e) {}
 					
 					@Override
 					public void internalFrameClosed(InternalFrameEvent e) {
-						preencheTitulos();
+						preencheExpDocente();
 					}
 					
 					@Override
-					public void internalFrameActivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameActivated(InternalFrameEvent e) {}
 				});
 				JCurriculo.this.getDesktopPane().add(jexpDoc);
 				try {
@@ -495,34 +470,19 @@ public class JCurriculo extends JInternalFrame {
 				jpubl.addInternalFrameListener(new InternalFrameListener() {
 					
 					@Override
-					public void internalFrameOpened(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameOpened(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameIconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameIconified(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameDeiconified(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeiconified(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameDeactivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameDeactivated(InternalFrameEvent e) {}
 					
 					@Override
-					public void internalFrameClosing(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameClosing(InternalFrameEvent e) {}
 					
 					@Override
 					public void internalFrameClosed(InternalFrameEvent e) {
@@ -530,10 +490,7 @@ public class JCurriculo extends JInternalFrame {
 					}
 					
 					@Override
-					public void internalFrameActivated(InternalFrameEvent e) {
-						// TODO Auto-generated method stub
-						
-					}
+					public void internalFrameActivated(InternalFrameEvent e) {}
 				});
 				JCurriculo.this.getDesktopPane().add(jpubl);
 				try {
