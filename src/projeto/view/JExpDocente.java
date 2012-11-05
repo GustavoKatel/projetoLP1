@@ -53,8 +53,9 @@ public class JExpDocente extends JInternalFrame {
 	
 	public void initComponents()
 	{
+		setTitle("Experiencia Docente");
 		setBounds(100, 100, 450, 300);
-		getContentPane().setLayout(new MigLayout("", "[][150px:n][][grow]", "[][][][][][]"));
+		getContentPane().setLayout(new MigLayout("", "[][150px:n][][]", "[][][][][][]"));
 		
 		JLabel lblDataDeIncio = new JLabel("Data de início:");
 		getContentPane().add(lblDataDeIncio, "cell 0 0,alignx trailing");
