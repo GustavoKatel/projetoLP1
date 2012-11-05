@@ -90,7 +90,32 @@ public class Curriculo {
 	{
 		this.titulos = titulos;
 	}
+
 	
+	public LinkedList<ExpDocente> getExpsDocente() {
+		return expsDocente;
+	}
+
+	public void setExpsDocente(LinkedList<ExpDocente> expsDocente) {
+		this.expsDocente = expsDocente;
+	}
+
+	public LinkedList<ExpRelevante> getExpsRelevante() {
+		return expsRelevante;
+	}
+
+	public void setExpsRelevante(LinkedList<ExpRelevante> expsRelevante) {
+		this.expsRelevante = expsRelevante;
+	}
+
+	public LinkedList<Publicacao> getPublicacoes() {
+		return publicacoes;
+	}
+
+	public void setPublicacoes(LinkedList<Publicacao> publicacoes) {
+		this.publicacoes = publicacoes;
+	}
+
 	public static void setLastId(int id)
 	{
 		ID_COUNT=id+1;

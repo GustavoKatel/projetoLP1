@@ -15,10 +15,10 @@ public class Publicacao {
 	private String area;
 	
 	/**
-	 * @param titulo titulo da publica��o
+	 * @param titulo titulo da publicação
 	 * @param evento nome do evento na qual o trabalho foi publicado
 	 * @param area area de interesse relativo ao trabalho
-	 * @param ano ano em que a publica��o foi feita
+	 * @param ano ano em que a publicação foi feita
 	 */
 	
 	public Publicacao(String titulo, String autores, String evento, String area,
