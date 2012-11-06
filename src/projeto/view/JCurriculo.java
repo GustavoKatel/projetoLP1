@@ -161,7 +161,7 @@ public class JCurriculo extends JInternalFrame {
 	public void salvar()
 	{
 		
-		curriculo.setReg_profissional(reg_profissional_text.getText());
+		curriculo.setReg_profissional(regProfissional_text.getText());
 		curriculo.setEmail(email_text.getText());
 		curriculo.setCpf(cpf_text.getText());
 		curriculo.setEndereco(endereco_text.getText());
