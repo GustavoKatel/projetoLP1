@@ -55,7 +55,7 @@ public class JCurriculo extends JInternalFrame {
 	public JCurriculo()
 	{
 		controller = new CurriculoController();
-		this.curriculo = new Curriculo("", "", "", "", 0, 0);
+		this.curriculo = new Curriculo("", "", "", "", "", 0);
 		novo=true;
 		initComponents();
 	}
