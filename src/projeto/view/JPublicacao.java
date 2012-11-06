@@ -3,11 +3,13 @@ package projeto.view;
 import javax.swing.JInternalFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import projeto.models.Publicacao;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.beans.PropertyVetoException;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
@@ -17,10 +19,10 @@ public class JPublicacao extends JInternalFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField titulo_text;
+	private JTextField evento_text;
+	private JTextField autores_text;
+	private JTextField ano_text;
 	//
 	private Publicacao publicacao;
 	private LinkedList<Publicacao> publicacoes;
@@ -54,8 +56,25 @@ public class JPublicacao extends JInternalFrame {
 		initComponents();
 	}
 	public void salvar(){
+		publicacao.setTitulo(titulo_text.getText());
+		try
+		{
+			publicacao.setAno(Integer.parseInt(ano_text.getText()));
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Informe um ano válido!");
+			return;
+		}
+		//publicacao.setArea(area_)
+		publicacao.setAutores(autores_text.getText());
+		publicacao.setEvento(evento_text.getText());
 		if(novo)
-			this.publicacoes.add(this.publicacao);
+			publicacoes.add(publicacao);
+		try {
+			this.setClosed(true);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 
@@ -71,34 +90,34 @@ public class JPublicacao extends JInternalFrame {
 		JLabel lblTtuloDaPublicao = new JLabel("Título da Publicação");
 		getContentPane().add(lblTtuloDaPublicao, "cell 0 0,alignx trailing");
 		
-		textField = new JTextField();
-		textField.setText(publicacao.getTitulo());
-		getContentPane().add(textField, "cell 1 0,growx");
-		textField.setColumns(10);
+		titulo_text = new JTextField();
+		titulo_text.setText(publicacao.getTitulo());
+		getContentPane().add(titulo_text, "cell 1 0,growx");
+		titulo_text.setColumns(10);
 		
 		JLabel lblAutores = new JLabel("Autores");
 		getContentPane().add(lblAutores, "cell 0 1,alignx trailing");
 		
-		textField_2 = new JTextField();
-		textField_2.setText(publicacao.getAutores());
-		getContentPane().add(textField_2, "cell 1 1,growx");
-		textField_2.setColumns(10);
+		autores_text = new JTextField();
+		autores_text.setText(publicacao.getAutores());
+		getContentPane().add(autores_text, "cell 1 1,growx");
+		autores_text.setColumns(10);
 		
 		JLabel lblEvento = new JLabel("Evento");
 		getContentPane().add(lblEvento, "cell 0 2,alignx trailing");
 		
-		textField_1 = new JTextField();
-		textField_1.setText(publicacao.getEvento());
-		getContentPane().add(textField_1, "cell 1 2,growx");
-		textField_1.setColumns(10);
+		evento_text = new JTextField();
+		evento_text.setText(publicacao.getEvento());
+		getContentPane().add(evento_text, "cell 1 2,growx");
+		evento_text.setColumns(10);
 		
 		JLabel lblAnoDaPublicao = new JLabel("Ano da Publicação");
 		getContentPane().add(lblAnoDaPublicao, "cell 0 3,alignx trailing");
 		
-		textField_3 = new JTextField();
-		textField_3.setText(String.valueOf(publicacao.getAno()));
-		getContentPane().add(textField_3, "cell 1 3,growx");
-		textField_3.setColumns(10);
+		ano_text = new JTextField();
+		ano_text.setText(String.valueOf(publicacao.getAno()));
+		getContentPane().add(ano_text, "cell 1 3,growx");
+		ano_text.setColumns(10);
 		
 		JButton btnSalvar = new JButton("Salvar");
 		btnSalvar.addActionListener(new ActionListener() {
@@ -109,6 +128,16 @@ public class JPublicacao extends JInternalFrame {
 		getContentPane().add(btnSalvar, "cell 0 5,alignx right");
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JPublicacao.this.setClosed(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		getContentPane().add(btnCancelar, "cell 1 5");
 	}
 	

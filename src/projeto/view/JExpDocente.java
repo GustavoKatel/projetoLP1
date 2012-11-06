@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import net.miginfocom.swing.MigLayout;
+
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import projeto.models.ExpDocente;
@@ -60,8 +62,14 @@ public class JExpDocente extends JInternalFrame {
 	public void salvar()
 	{
 		exp.setCidade(cidade_text.getText());
-		exp.setData_fim(Integer.parseInt(data_termino_text.getText()));
-		exp.setData_inicio(Integer.parseInt(data_inicio_text.getText()));
+		try
+		{
+			exp.setData_fim(Integer.parseInt(data_termino_text.getText()));
+			exp.setData_inicio(Integer.parseInt(data_inicio_text.getText()));
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Informe um ano válido!");
+			return;
+		}
 		exp.setDescricao(descricao_text.getText());
 		exp.setEstado(estado_text.getText());
 		exp.setInstituicao(instituicao_text.getText());

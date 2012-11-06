@@ -5,6 +5,8 @@ import javax.swing.JInternalFrame;
 import projeto.controller.CurriculoController;
 import projeto.models.Curriculo;
 import projeto.models.ExpDocente;
+import projeto.models.ExpRelevante;
+import projeto.models.Publicacao;
 import projeto.models.Titulo;
 import net.miginfocom.swing.MigLayout;
 
@@ -41,14 +43,20 @@ public class JCurriculo extends JInternalFrame {
 	private JTextField endereco_text;
 	private JFormattedTextField telefone_forText;
 	private JTextField email_text;
-	private JFormattedTextField cpf_forText;
-	private JFormattedTextField regProfissional_forText;
+	private JTextField cpf_forText;
+	private JTextField regProfissional_forText;
 	//
 	private JPanel titulos_panel;
 	private ButtonGroup TitulosGroup;
 	//
 	private JPanel expDocente_panel;
 	private ButtonGroup expDocenteGroup;
+	//
+	private JPanel expRelevante_panel;
+	private ButtonGroup expRelevanteGroup;
+	//
+	private JPanel publicacoes_panel;
+	private ButtonGroup publicacoesGroup;
 	//
 	private boolean novo=true;
 	
@@ -82,6 +90,8 @@ public class JCurriculo extends JInternalFrame {
 		}
 		preencheTitulos();
 		preencheExpDocente();
+		preencheExpRelevante();
+		preenchePublicacoes();
 	}
 	
 	public void preencheTitulos()
@@ -112,6 +122,38 @@ public class JCurriculo extends JInternalFrame {
 				JRadioButton rb = new JRadioButton(expDoc.toString());
 				expDocente_panel.add(rb);
 				expDocenteGroup.add(rb);
+			}
+		}
+	}
+	
+	public void preencheExpRelevante()
+	{
+		if(curriculo!=null)
+		{
+			expRelevante_panel.removeAll();
+			//
+			expRelevanteGroup = new ButtonGroup();
+			for(ExpRelevante expRel : curriculo.getExpsRelevante())
+			{
+				JRadioButton rb = new JRadioButton(expRel.toString());
+				expRelevante_panel.add(rb);
+				expRelevanteGroup.add(rb);
+			}
+		}
+	}
+	
+	public void preenchePublicacoes()
+	{
+		if(curriculo!=null)
+		{
+			publicacoes_panel.removeAll();
+			//
+			publicacoesGroup = new ButtonGroup();
+			for(Publicacao pub : curriculo.getPublicacoes())
+			{
+				JRadioButton rb = new JRadioButton(pub.toString());
+				publicacoes_panel.add(rb);
+				publicacoesGroup.add(rb);
 			}
 		}
 	}
@@ -232,14 +274,14 @@ public class JCurriculo extends JInternalFrame {
 		panel_5.add(panel_2, "cell 1 4");
 		panel_2.setLayout(new MigLayout("", "[130px:n][][][grow]", "[]"));
 		
-		cpf_forText = new JFormattedTextField();
+		cpf_forText = new JTextField();
 		cpf_forText.setToolTipText("Digite o cpf (Somente números)");
 		panel_2.add(cpf_forText, "cell 0 0,growx");
 		
 		JLabel lblRegistroProfissional = new JLabel("Registro Profissional:");
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
 		
-		regProfissional_forText = new JFormattedTextField();
+		regProfissional_forText = new JTextField();
 		panel_2.add(regProfissional_forText, "cell 3 0,growx");
 		
 		JPanel panel_6 = new JPanel();
@@ -439,47 +481,213 @@ public class JCurriculo extends JInternalFrame {
 		panel_11.add(btnAdicionar_1);
 		
 		JButton btnEditar_1 = new JButton("Editar");
+		btnEditar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(int i=0;i<expDocente_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)expDocente_panel.getComponent(i)).isSelected())
+					{
+						JExpDocente jexpDoc = new JExpDocente(curriculo.getExpsDocente(), i);
+						jexpDoc.setVisible(true);
+						jexpDoc.setClosable(true);
+						jexpDoc.setMaximizable(false);
+						jexpDoc.addInternalFrameListener(new InternalFrameListener() {
+							
+							@Override
+							public void internalFrameOpened(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameIconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeiconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeactivated(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosing(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosed(InternalFrameEvent e) {
+								preencheExpDocente();
+							}
+							
+							@Override
+							public void internalFrameActivated(InternalFrameEvent e) {}
+						});
+						JCurriculo.this.getDesktopPane().add(jexpDoc);
+						try {
+							jexpDoc.setMaximum(true);
+						} catch (PropertyVetoException e) {
+							e.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+		});
 		panel_11.add(btnEditar_1);
 		
 		JButton btnExcluir_1 = new JButton("Excluir");
+		btnExcluir_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0;i<expDocente_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)expDocente_panel.getComponent(i)).isSelected())
+					{
+						curriculo.getExpsDocente().remove(i);
+						expDocente_panel.remove(i);
+						expDocente_panel.repaint();
+						break;
+					}
+				}
+			}
+		});
 		panel_11.add(btnExcluir_1);
 		
 		JPanel panel_12 = new JPanel();
 		panel_12.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(panel_12, "cell 0 3,grow");
-		panel_12.setLayout(new MigLayout("", "[grow]", "[][][grow]"));
+		panel_12.setLayout(new MigLayout("", "[grow]", "[][70px:n,grow][grow]"));
 		
 		JLabel lblExperinciaProfissionalRelevante = new JLabel("Experiência Profissional Relevante");
 		panel_12.add(lblExperinciaProfissionalRelevante, "cell 0 0");
 		
-		JPanel panel_13 = new JPanel();
-		panel_12.add(panel_13, "cell 0 1,grow");
-		panel_13.setLayout(new MigLayout("", "[]", "[]"));
+		expRelevante_panel = new JPanel();
+		panel_12.add(expRelevante_panel, "cell 0 1,grow");
+		expRelevante_panel.setLayout(new BoxLayout(expRelevante_panel, BoxLayout.Y_AXIS));
 		
 		JPanel panel_14 = new JPanel();
 		panel_12.add(panel_14, "cell 0 2,grow");
 		panel_14.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnAdicionar_2 = new JButton("Adicionar");
+		btnAdicionar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Cria uma nova janela JExpRelevante (extends JInternalFrame)
+				 * Define os atributos
+				 * Adiciona um InternalFrameListener (Escuta), responsável por tratar operações relacionadas à janela.
+				 * Definimos apenas instruções para quando a janela for fechada (internalFrameClosed).
+				 * É chamado o método preencheExpRelevante, responsável por atualizar os RadioButton's dentro do panel. 
+				 */
+				JExpRelevante jexpRel = new JExpRelevante(curriculo.getExpsRelevante());
+				jexpRel.setVisible(true);
+				jexpRel.setClosable(true);
+				jexpRel.setMaximizable(false);
+				jexpRel.addInternalFrameListener(new InternalFrameListener() {
+					
+					@Override
+					public void internalFrameOpened(InternalFrameEvent e) {}
+					
+					@Override
+					public void internalFrameIconified(InternalFrameEvent e) {}
+					
+					@Override
+					public void internalFrameDeiconified(InternalFrameEvent e) {}
+					
+					@Override
+					public void internalFrameDeactivated(InternalFrameEvent e) {}
+					
+					@Override
+					public void internalFrameClosing(InternalFrameEvent e) {}
+					
+					@Override
+					public void internalFrameClosed(InternalFrameEvent e) {
+						preencheExpRelevante();
+					}
+					
+					@Override
+					public void internalFrameActivated(InternalFrameEvent e) {}
+				});
+				JCurriculo.this.getDesktopPane().add(jexpRel);
+				try {
+					jexpRel.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		panel_14.add(btnAdicionar_2);
 		
 		JButton btnEditar_2 = new JButton("Editar");
+		btnEditar_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0;i<expRelevante_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)expRelevante_panel.getComponent(i)).isSelected())
+					{
+						JExpRelevante jexpRel = new JExpRelevante(curriculo.getExpsRelevante(), i);
+						jexpRel.setVisible(true);
+						jexpRel.setClosable(true);
+						jexpRel.setMaximizable(false);
+						jexpRel.addInternalFrameListener(new InternalFrameListener() {
+							
+							@Override
+							public void internalFrameOpened(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameIconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeiconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeactivated(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosing(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosed(InternalFrameEvent e) {
+								preencheExpRelevante();
+							}
+							
+							@Override
+							public void internalFrameActivated(InternalFrameEvent e) {}
+						});
+						JCurriculo.this.getDesktopPane().add(jexpRel);
+						try {
+							jexpRel.setMaximum(true);
+						} catch (PropertyVetoException e1) {
+							e1.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+		});
 		panel_14.add(btnEditar_2);
 		
 		JButton btnExcluir_2 = new JButton("Excluir");
+		btnExcluir_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0;i<expRelevante_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)expRelevante_panel.getComponent(i)).isSelected())
+					{
+						curriculo.getExpsDocente().remove(i);
+						expRelevante_panel.remove(i);
+						expRelevante_panel.repaint();
+						break;
+					}
+				}
+			}
+		});
 		panel_14.add(btnExcluir_2);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBorder(new LineBorder(new Color(0, 0, 0)));
 		panel.add(panel_15, "cell 0 4,grow");
-		panel_15.setLayout(new MigLayout("", "[grow]", "[][][grow]"));
+		panel_15.setLayout(new MigLayout("", "[grow]", "[][70px:n,grow][grow]"));
 		
 		JLabel lblPublicaes = new JLabel("Publicações");
 		panel_15.add(lblPublicaes, "cell 0 0");
 		
-		JPanel panel_16 = new JPanel();
-		panel_15.add(panel_16, "cell 0 1,grow");
-		panel_16.setLayout(new MigLayout("", "[]", "[]"));
+		publicacoes_panel = new JPanel();
+		panel_15.add(publicacoes_panel, "cell 0 1,grow");
+		publicacoes_panel.setLayout(new BoxLayout(publicacoes_panel, BoxLayout.Y_AXIS));
 		
 		JPanel panel_17 = new JPanel();
 		panel_15.add(panel_17, "cell 0 2,grow");
@@ -511,7 +719,7 @@ public class JCurriculo extends JInternalFrame {
 					
 					@Override
 					public void internalFrameClosed(InternalFrameEvent e) {
-						preencheTitulos();
+						preenchePublicacoes();
 					}
 					
 					@Override
@@ -528,9 +736,69 @@ public class JCurriculo extends JInternalFrame {
 		panel_17.add(btnAdicionar_3);
 		
 		JButton btnEditar_3 = new JButton("Editar");
+		btnEditar_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0;i<publicacoes_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)publicacoes_panel.getComponent(i)).isSelected())
+					{
+						JPublicacao jpubl = new JPublicacao(curriculo.getPublicacoes(), i);
+						jpubl.setVisible(true);
+						jpubl.setClosable(true);
+						jpubl.setMaximizable(false);
+						jpubl.addInternalFrameListener(new InternalFrameListener() {
+							
+							@Override
+							public void internalFrameOpened(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameIconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeiconified(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameDeactivated(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosing(InternalFrameEvent e) {}
+							
+							@Override
+							public void internalFrameClosed(InternalFrameEvent e) {
+								preenchePublicacoes();
+							}
+							
+							@Override
+							public void internalFrameActivated(InternalFrameEvent e) {}
+						});
+						JCurriculo.this.getDesktopPane().add(jpubl);
+						try {
+							jpubl.setMaximum(true);
+						} catch (PropertyVetoException e1) {
+							e1.printStackTrace();
+						}
+						break;
+					}
+				}
+			}
+		});
 		panel_17.add(btnEditar_3);
 		
 		JButton btnExcluir_3 = new JButton("Excluir");
+		btnExcluir_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				for(int i=0;i<publicacoes_panel.getComponentCount();i++)
+				{
+					if(((JRadioButton)publicacoes_panel.getComponent(i)).isSelected())
+					{
+						curriculo.getPublicacoes().remove(i);
+						publicacoes_panel.remove(i);
+						publicacoes_panel.repaint();
+						break;
+					}
+				}
+			}
+		});
 		panel_17.add(btnExcluir_3);
 		
 		JPanel panel_18 = new JPanel();
