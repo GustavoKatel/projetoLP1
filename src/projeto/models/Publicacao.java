@@ -70,6 +70,6 @@ public class Publicacao {
 	}
 	public String toString()
 	{
-		return "("+ano+") "+titulo+" - "+autores+" , "+evento+" . "+area+" . ";
+		return "("+ano+") "+titulo+" - "+autores+" , "+evento+" . ";
 	}
 }

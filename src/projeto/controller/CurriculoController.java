@@ -138,8 +138,8 @@ public class CurriculoController {
 					outputPub.writeUTF(pub.getTitulo());
 					outputPub.writeUTF(pub.getAutores());
 					outputPub.writeUTF(pub.getEvento());
-					outputPub.writeInt(pub.getAno());
 					outputPub.writeUTF(pub.getArea());
+					outputPub.writeInt(pub.getAno());
 				}
 			}
 			outputTitulos.flush();

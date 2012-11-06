@@ -160,7 +160,11 @@ public class JCurriculo extends JInternalFrame {
 	
 	public void salvar()
 	{
-		
+		if(nome_text.getText().equals(""))
+		{
+			JOptionPane.showMessageDialog(null, "Informe um nome válido!");
+			return;
+		}
 		curriculo.setReg_profissional(regProfissional_text.getText());
 		curriculo.setEmail(email_text.getText());
 		curriculo.setCpf(cpf_text.getText());

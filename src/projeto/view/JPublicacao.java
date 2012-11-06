@@ -57,14 +57,15 @@ public class JPublicacao extends JInternalFrame {
 	}
 	public void salvar(){
 		publicacao.setTitulo(titulo_text.getText());
+		int ano=2012;
 		try
 		{
-			publicacao.setAno(Integer.parseInt(ano_text.getText()));
+			ano = Integer.parseInt(ano_text.getText());
 		}catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Informe um ano válido!");
 			return;
 		}
-		//publicacao.setArea(area_)
+		publicacao.setAno(ano);
 		publicacao.setAutores(autores_text.getText());
 		publicacao.setEvento(evento_text.getText());
 		if(novo)

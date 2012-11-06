@@ -9,6 +9,7 @@ import javax.swing.JInternalFrame;
 import projeto.models.Titulo;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -73,7 +74,12 @@ public class JTitulo extends JInternalFrame {
 
 	public void salvar()
 	{
-		titulo.setAno(Integer.parseInt(ano_forText.getText()));
+		try
+		{
+			titulo.setAno(Integer.parseInt(ano_forText.getText()));
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Digite um ano válido!");
+		}
 		titulo.setFormacao(tipo_combo.getSelectedItem().toString());
 		titulo.setCurso(curso_text.getText());
 		titulo.setInstituicao(instituicao_text.getText());
