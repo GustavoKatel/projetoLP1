@@ -19,10 +19,25 @@ public class Curriculo {
 	private LinkedList<ExpRelevante> expsRelevante;
 	private LinkedList<Publicacao> publicacoes;
 	
+	public Curriculo(int id,String nome, String endereco, String telefone,
+			String email, int cpf, int reg_profissional)
+	{
+		this.id = id;
+		this.nome = nome;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.email = email;
+		this.cpf = cpf;
+		this.reg_profissional = reg_profissional;
+		this.titulos = new LinkedList<Titulo>();
+		this.expsDocente = new LinkedList<ExpDocente>();
+		this.expsRelevante = new LinkedList<ExpRelevante>();
+		this.publicacoes = new LinkedList<Publicacao>();
+	}
+	
 	//Construtor da classe Currículo.
 	public Curriculo(String nome, String endereco, String telefone,
 			String email, int cpf, int reg_profissional) {
-		super();
 		this.id = ID_COUNT++;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -80,11 +95,11 @@ public class Curriculo {
 		return titulos;		
 	}
 	
-	public void addTitulo(Titulo titulo) {
-		if (titulos != null){
-			titulos.add(titulo);
-		}
-	}
+//	public void addTitulo(Titulo titulo) {
+//		if (titulos != null){
+//			titulos.add(titulo);
+//		}
+//	}
 
 	public void setTitulos(LinkedList<Titulo> titulos)
 	{

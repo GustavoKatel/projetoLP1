@@ -17,10 +17,10 @@ public class Titulo {
 
 	/**
 	 * 
-	 * @param ano ano em que foi conclu�do o curso
-	 * @param formacao tipo de forma��o
-	 * @param curso curso no qual foi conclu�do
-	 * @param instituicao institui��o na qual foi conclu�do o curso
+	 * @param ano ano em que foi concluído o curso
+	 * @param formacao tipo de formação
+	 * @param curso curso no qual foi concluído
+	 * @param instituicao instituição na qual foi concluído o curso
 	 * @param cidade cidade em que foi feito o curso
 	 * @param estado estado a que a cidade pertence
 	 */

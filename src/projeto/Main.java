@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.JLabel;
 
+import projeto.controller.CurriculoController;
 import projeto.view.JConsulta;
 import projeto.view.JCurriculo;
 
@@ -25,6 +26,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.InputEvent;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author Arthur, Gustavo, C.Marcelo, Rodolfo.
@@ -46,6 +49,9 @@ public class Main extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					CurriculoController controller = new CurriculoController();
+					controller.load();
+					//
 					Main frame = new Main();
 					frame.setVisible(true);
 					frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -60,7 +66,17 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 */
 	public Main() {
+		initComponents();
+	}
+	private void initComponents() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				CurriculoController controller = new CurriculoController();
+				controller.save();
+			}
+		});
 		setBounds(100, 100, 691, 473);
 		
 		JMenuBar menuBar = new JMenuBar();
