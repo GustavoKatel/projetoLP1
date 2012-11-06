@@ -41,7 +41,7 @@ public class JCurriculo extends JInternalFrame {
 	private JTextField endereco_text;
 	private JFormattedTextField telefone_forText;
 	private JTextField email_text;
-	private JFormattedTextField cpf_forText;
+	private JTextField cpf_text;
 	private JFormattedTextField regProfissional_forText;
 	//
 	private JPanel titulos_panel;
@@ -77,7 +77,7 @@ public class JCurriculo extends JInternalFrame {
 			endereco_text.setText(curriculo.getEndereco());
 			telefone_forText.setText(curriculo.getTelefone());
 			email_text.setText(curriculo.getEmail());
-			cpf_forText.setText(String.valueOf(curriculo.getCpf()));
+			cpf_text.setText(curriculo.getCpf());
 			regProfissional_forText.setText(String.valueOf(curriculo.getReg_profissional()));
 		}
 		preencheTitulos();
@@ -118,15 +118,7 @@ public class JCurriculo extends JInternalFrame {
 	
 	public void salvar()
 	{
-		int cpf = 0, registro=0;
-		try
-		{
-			cpf = Integer.parseInt(cpf_forText.getText());
-		}catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Informe um cpf válido!");
-			return;
-		}
-		curriculo.setCpf(cpf);
+		int registro=0;
 		try
 		{
 			registro = Integer.parseInt(regProfissional_forText.getText());
@@ -137,6 +129,7 @@ public class JCurriculo extends JInternalFrame {
 		curriculo.setReg_profissional(registro);
 		curriculo.setEmail(email_text.getText());
 		curriculo.setEndereco(endereco_text.getText());
+		curriculo.setCpf(cpf_text.getText());
 		curriculo.setNome(nome_text.getText());
 		curriculo.setTelefone(telefone_forText.getText());	
 		if(novo)
@@ -232,9 +225,9 @@ public class JCurriculo extends JInternalFrame {
 		panel_5.add(panel_2, "cell 1 4");
 		panel_2.setLayout(new MigLayout("", "[130px:n][][][grow]", "[]"));
 		
-		cpf_forText = new JFormattedTextField();
-		cpf_forText.setToolTipText("Digite o cpf (Somente números)");
-		panel_2.add(cpf_forText, "cell 0 0,growx");
+		cpf_text = new JFormattedTextField();
+		cpf_text.setToolTipText("Digite o cpf (Somente números)");
+		panel_2.add(cpf_text, "cell 0 0,growx");
 		
 		JLabel lblRegistroProfissional = new JLabel("Registro Profissional:");
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
