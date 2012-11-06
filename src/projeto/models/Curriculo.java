@@ -16,14 +16,14 @@ public class Curriculo {
 	private String telefone;
 	private String email;
 	private String cpf;
-	private int reg_profissional;
+	private String reg_profissional;
 	private LinkedList<Titulo> titulos;
 	private LinkedList<ExpDocente> expsDocente;
 	private LinkedList<ExpRelevante> expsRelevante;
 	private LinkedList<Publicacao> publicacoes;
 	
 	public Curriculo(int id,String nome, String endereco, String telefone,
-			String email, String cpf, int reg_profissional)
+			String email, String cpf, String reg_profissional)
 	{
 		this.id = id;
 		this.nome = nome;
@@ -40,7 +40,7 @@ public class Curriculo {
 	
 	//Construtor da classe Currículo.
 	public Curriculo(String nome, String endereco, String telefone,
-			String email, String cpf, int reg_profissional) {
+			String email, String cpf, String reg_profissional) {
 		super();
 		this.id = ID_COUNT++;
 		this.nome = nome;
@@ -89,10 +89,10 @@ public class Curriculo {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public int getReg_profissional() {
+	public String getReg_profissional() {
 		return reg_profissional;
 	}
-	public void setReg_profissional(int reg_profissional) {
+	public void setReg_profissional(String reg_profissional) {
 		this.reg_profissional = reg_profissional;
 	}
 	public LinkedList<Titulo> getTitulos(){
