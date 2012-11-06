@@ -62,6 +62,7 @@ public class JConsulta extends JInternalFrame {
 	}
 	
 	private void initComponents() {
+		setTitle("Consultar");
 		setBounds(100, 100, 339, 198);
 		getContentPane().setLayout(new MigLayout("", "[][grow]", "[][][]"));
 		
