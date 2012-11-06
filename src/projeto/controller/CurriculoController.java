@@ -96,7 +96,7 @@ public class CurriculoController {
 				output.writeUTF(curriculo.getEndereco());
 				output.writeUTF(curriculo.getTelefone());
 				output.writeUTF(curriculo.getEmail());
-				output.writeInt(curriculo.getCpf());
+				output.writeUTF(curriculo.getCpf());
 				output.writeInt(curriculo.getReg_profissional());
 				//gravação de titulos
 				for(Titulo ti : curriculo.getTitulos())
@@ -191,7 +191,7 @@ public class CurriculoController {
 			int lastId=0;
 			while(moreRecords)
 			{
-				Curriculo cur = new Curriculo(input.readInt(), input.readUTF(), input.readUTF(), input.readUTF(), input.readUTF(), input.readInt(), input.readInt());
+				Curriculo cur = new Curriculo(input.readInt(), input.readUTF(), input.readUTF(), input.readUTF(), input.readUTF(), input.readUTF(), input.readInt());
 				curriculos.add(cur);
 				lastId=cur.getId();
 			}
