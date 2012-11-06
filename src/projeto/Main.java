@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import projeto.controller.CurriculoController;
+import projeto.view.JAbout;
 import projeto.view.JConsulta;
 import projeto.view.JCurriculo;
 
@@ -102,6 +103,7 @@ public class Main extends JFrame {
 		mnArquivo.add(mntmNovoCurrculo);
 		
 		JMenuItem mntmPesquisar = new JMenuItem("Pesquisar");
+		mntmPesquisar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F, InputEvent.CTRL_MASK));
 		mntmPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JConsulta jcon = new JConsulta();
@@ -119,6 +121,13 @@ public class Main extends JFrame {
 		mnArquivo.add(mntmPesquisar);
 		
 		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				CurriculoController controller = new CurriculoController();
+				controller.save();
+				System.exit(0);
+			}
+		});
 		mnArquivo.add(mntmSair);
 		
 		JMenu mnAjuda = new JMenu("Ajuda");
@@ -126,6 +135,19 @@ public class Main extends JFrame {
 		menuBar.add(mnAjuda);
 		
 		JMenuItem mntmSobre = new JMenuItem("Sobre");
+		mntmSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JAbout jab = new JAbout();
+				Main.this.desktopPane.add(jab);
+				jab.setVisible(true);
+				try {
+					jab.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnAjuda.add(mntmSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

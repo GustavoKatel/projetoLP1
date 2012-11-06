@@ -188,13 +188,15 @@ public class CurriculoController {
 		boolean moreRecords=true;
 		try {
 			DataInputStream input = new DataInputStream(new FileInputStream("curriculos.dat"));
+			int lastId=0;
 			while(moreRecords)
 			{
 				Curriculo cur = new Curriculo(input.readInt(), input.readUTF(), input.readUTF(), input.readUTF(), input.readUTF(), input.readInt(), input.readInt());
 				curriculos.add(cur);
+				lastId=cur.getId();
 			}
+			Curriculo.setLastId(lastId);
 			input.close();
-			System.out.println("Ok");
 		} catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
