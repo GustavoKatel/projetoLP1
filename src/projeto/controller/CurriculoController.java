@@ -198,7 +198,7 @@ public class CurriculoController {
 			Curriculo.setLastId(lastId);
 			input.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
 			moreRecords=false;
 		}catch(IOException e){
@@ -223,7 +223,7 @@ public class CurriculoController {
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
 			moreRecords=false;
 		}catch(IOException e){
@@ -248,7 +248,7 @@ public class CurriculoController {
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
 			moreRecords=false;
 		}catch(IOException e){
@@ -273,7 +273,7 @@ public class CurriculoController {
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
 			moreRecords=false;
 		}catch(IOException e){
@@ -298,7 +298,7 @@ public class CurriculoController {
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
 		}catch (EOFException e) {
 			moreRecords=false;
 		}catch(IOException e){
