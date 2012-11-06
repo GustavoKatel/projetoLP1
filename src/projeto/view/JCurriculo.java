@@ -9,6 +9,7 @@ import projeto.models.Titulo;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
@@ -117,14 +118,23 @@ public class JCurriculo extends JInternalFrame {
 	
 	public void salvar()
 	{
-		int cpf = 0;
+		int cpf = 0, registro=0;
 		try
 		{
-			cpf = Integer.parseInt(cpf_forText.getText().replaceAll(".", "").replaceAll("-", ""));
+			cpf = Integer.parseInt(cpf_forText.getText());
 		}catch (NumberFormatException e) {
-			cpf=0;
+			JOptionPane.showMessageDialog(null, "Informe um cpf válido!");
+			return;
 		}
 		curriculo.setCpf(cpf);
+		try
+		{
+			registro = Integer.parseInt(regProfissional_forText.getText());
+		}catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Informe um registro profissional válido!");
+			return;
+		}
+		curriculo.setReg_profissional(registro);
 		curriculo.setEmail(email_text.getText());
 		curriculo.setEndereco(endereco_text.getText());
 		curriculo.setNome(nome_text.getText());
@@ -222,15 +232,7 @@ public class JCurriculo extends JInternalFrame {
 		panel_5.add(panel_2, "cell 1 4");
 		panel_2.setLayout(new MigLayout("", "[130px:n][][][grow]", "[]"));
 		
-		MaskFormatter cpfFm = null;
-		try
-		{
-			cpfFm = new MaskFormatter("###.###.###-##");
-			cpfFm.setValidCharacters("0123456789");
-		}catch (ParseException e) {
-			// TODO: handle exception
-		}
-		cpf_forText = new JFormattedTextField(cpfFm);
+		cpf_forText = new JFormattedTextField();
 		cpf_forText.setToolTipText("Digite o cpf (Somente números)");
 		panel_2.add(cpf_forText, "cell 0 0,growx");
 		

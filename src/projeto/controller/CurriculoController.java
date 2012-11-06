@@ -159,13 +159,18 @@ public class CurriculoController {
 		} catch (FileNotFoundException e) {
 			erro=true;
 			JOptionPane.showMessageDialog(null, "Arquivo não encontrado!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			return false;
 		} catch (IOException e) {
 			erro=true;
 			JOptionPane.showMessageDialog(null, "Arquivo ao gravar arquivo!\n"+e.getCause(), "Erro", JOptionPane.ERROR_MESSAGE);
+			return false;
 		} finally {
 			erro=false;
 		}
-		return erro;
+		if(!erro)
+			return true;
+		else
+			return false;
 	}
 
 	public boolean load() {
@@ -175,12 +180,7 @@ public class CurriculoController {
 		readExpDocente();
 		readExpRelevante();
 		readPublicacoes();
-		//
-		for(Curriculo cur : curriculos)
-			System.out.println(cur.getNome());
-		System.out.println(curriculos.size());
-		//
-		return false;
+		return true;
 	}
 	
 	private void readCurriculos()
