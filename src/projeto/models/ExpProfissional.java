@@ -96,4 +96,9 @@ public abstract class ExpProfissional {
 		this.estado = estado;
 	}
 	
+	public String toString()
+	{
+		return "("+data_inicio+" - "+data_fim+") - "+descricao+" - "+instituicao+" - "+cidade+", "+estado;
+	}
+	
 }

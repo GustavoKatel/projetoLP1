@@ -14,6 +14,7 @@ public class CurriculoController {
 	}
 	
 	public boolean add(Curriculo obj) {
+		System.out.println("adicionado");
 		return curriculos.add(obj);
 	}
 
@@ -30,6 +31,7 @@ public class CurriculoController {
 				c.setReg_profissional(curriculo.getReg_profissional());
 				c.setTelefone(curriculo.getTelefone());
 				c.setTitulos(curriculo.getTitulos());
+				System.out.println("atualizado");
 				return true;
 			}
 		}
@@ -42,6 +44,16 @@ public class CurriculoController {
 		return curriculos.get(i);
 	}
 
+	public Curriculo find(String nome)
+	{
+		for(Curriculo curriculo : curriculos)
+		{
+			if(curriculo.getNome().equals(nome))
+				return curriculo;
+		}
+		return null;
+	}
+	
 	public int getSize()
 	{
 		return curriculos.size();

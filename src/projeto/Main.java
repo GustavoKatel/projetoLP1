@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import java.awt.Color;
 import javax.swing.JLabel;
 
+import projeto.view.JConsulta;
 import projeto.view.JCurriculo;
 
 import java.awt.event.ActionListener;
@@ -88,6 +89,20 @@ public class Main extends JFrame {
 		mnArquivo.add(mntmNovoCurrculo);
 		
 		JMenuItem mntmPesquisar = new JMenuItem("Pesquisar");
+		mntmPesquisar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JConsulta jcon = new JConsulta();
+				Main.this.desktopPane.add(jcon);
+				jcon.setClosable(true);
+				jcon.setVisible(true);
+				jcon.setMaximizable(false);
+				try {
+					jcon.setMaximum(true);
+				} catch (PropertyVetoException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnArquivo.add(mntmPesquisar);
 		
 		JMenuItem mntmSair = new JMenuItem("Sair");

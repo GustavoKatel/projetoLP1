@@ -71,7 +71,7 @@ public class JTitulo extends JInternalFrame {
 		initComponents();
 	}
 
-	public void atualiza()
+	public void salvar()
 	{
 		titulo.setAno(Integer.parseInt(ano_forText.getText()));
 		titulo.setFormacao(tipo_combo.getSelectedItem().toString());
@@ -179,7 +179,7 @@ public class JTitulo extends JInternalFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//
-				atualiza();
+				salvar();
 			}
 		});
 		panel_5.add(btnNewButton);

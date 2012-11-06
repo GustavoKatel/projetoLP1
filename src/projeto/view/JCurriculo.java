@@ -95,7 +95,6 @@ public class JCurriculo extends JInternalFrame {
 				JRadioButton rb = new JRadioButton(ti.toString());
 				titulos_panel.add(rb);
 				TitulosGroup.add(rb);
-				System.out.println("linked: "+curriculo.getTitulos().size()+", comps: "+titulos_panel.getComponentCount()+", group: "+TitulosGroup.getButtonCount());
 			}
 		}
 	}
@@ -104,8 +103,7 @@ public class JCurriculo extends JInternalFrame {
 	{
 		if(curriculo!=null)
 		{
-			for(int i=0;i<expDocente_panel.getComponentCount();i++)
-				expDocente_panel.remove(i);
+			expDocente_panel.removeAll();
 			//
 			expDocenteGroup = new ButtonGroup();
 			for(ExpDocente expDoc : curriculo.getExpsDocente())
@@ -119,10 +117,28 @@ public class JCurriculo extends JInternalFrame {
 	
 	public void salvar()
 	{
+		int cpf = 0;
+		try
+		{
+			cpf = Integer.parseInt(cpf_forText.getText().replaceAll(".", "").replaceAll("-", ""));
+		}catch (NumberFormatException e) {
+			cpf=0;
+		}
+		curriculo.setCpf(cpf);
+		curriculo.setEmail(email_text.getText());
+		curriculo.setEndereco(endereco_text.getText());
+		curriculo.setNome(nome_text.getText());
+		curriculo.setTelefone(telefone_forText.getText());	
 		if(novo)
 			controller.add(curriculo);
 		else
 			controller.uptade(curriculo);
+		try {
+			this.setClosed(true);
+		} catch (PropertyVetoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void initComponents()
@@ -374,6 +390,13 @@ public class JCurriculo extends JInternalFrame {
 		JButton btnAdicionar_1 = new JButton("Adicionar");
 		btnAdicionar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*
+				 * Cria uma nova janela JExpDocente (extends JInternalFrame)
+				 * Define os atributos
+				 * Adiciona um InternalFrameListener (Escuta), responsável por tratar operações relacionadas à janela.
+				 * Definimos apenas instruções para quando a janela for fechada (internalFrameClosed).
+				 * É chamado o método preencheExpDocente, responsável por atualizar os RadioButton's dentro do panel. 
+				 */
 				JExpDocente jexpDoc = new JExpDocente(curriculo.getExpsDocente());
 				jexpDoc.setVisible(true);
 				jexpDoc.setClosable(true);
