@@ -44,7 +44,7 @@ public class JCurriculo extends JInternalFrame {
 	private JFormattedTextField telefone_forText;
 	private JTextField email_text;
 	private JTextField cpf_text;
-	private JTextField regProfissional_forText;
+	private JTextField regProfissional_text;
 	//
 	private JPanel titulos_panel;
 	private ButtonGroup TitulosGroup;
@@ -63,7 +63,7 @@ public class JCurriculo extends JInternalFrame {
 	public JCurriculo()
 	{
 		controller = new CurriculoController();
-		this.curriculo = new Curriculo("", "", "", "", "", 0);
+		this.curriculo = new Curriculo("", "", "", "", "", "");
 		novo=true;
 		initComponents();
 	}
@@ -86,7 +86,7 @@ public class JCurriculo extends JInternalFrame {
 			telefone_forText.setText(curriculo.getTelefone());
 			email_text.setText(curriculo.getEmail());
 			cpf_text.setText(curriculo.getCpf());
-			regProfissional_forText.setText(String.valueOf(curriculo.getReg_profissional()));
+			regProfissional_text.setText(curriculo.getReg_profissional());
 		}
 		preencheTitulos();
 		preencheExpDocente();
@@ -160,15 +160,8 @@ public class JCurriculo extends JInternalFrame {
 	
 	public void salvar()
 	{
-		int registro=0;
-		try
-		{
-			registro = Integer.parseInt(regProfissional_forText.getText());
-		}catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Informe um registro profissional válido!");
-			return;
-		}
-		curriculo.setReg_profissional(registro);
+		
+		curriculo.setReg_profissional(reg_profissional_text.getText());
 		curriculo.setEmail(email_text.getText());
 		curriculo.setCpf(cpf_text.getText());
 		curriculo.setEndereco(endereco_text.getText());
@@ -274,8 +267,8 @@ public class JCurriculo extends JInternalFrame {
 		JLabel lblRegistroProfissional = new JLabel("Registro Profissional:");
 		panel_2.add(lblRegistroProfissional, "cell 2 0,alignx trailing");
 		
-		regProfissional_forText = new JTextField();
-		panel_2.add(regProfissional_forText, "cell 3 0,growx");
+		regProfissional_text = new JTextField();
+		panel_2.add(regProfissional_text, "cell 3 0,growx");
 		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBorder(new LineBorder(new Color(0, 0, 0)));
