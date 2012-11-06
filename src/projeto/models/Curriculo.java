@@ -2,7 +2,10 @@ package projeto.models;
 
 import java.util.LinkedList;
 
-//Classe de dados para manipulação de Currículo
+/**
+ * @author Arthur, Gustavo, Rodolfo, C.Marcelo
+ */
+
 public class Curriculo {
 	
 	private static int ID_COUNT=0;
@@ -38,6 +41,7 @@ public class Curriculo {
 	//Construtor da classe Currículo.
 	public Curriculo(String nome, String endereco, String telefone,
 			String email, int cpf, int reg_profissional) {
+		super();
 		this.id = ID_COUNT++;
 		this.nome = nome;
 		this.endereco = endereco;
@@ -95,11 +99,11 @@ public class Curriculo {
 		return titulos;		
 	}
 	
-//	public void addTitulo(Titulo titulo) {
-//		if (titulos != null){
-//			titulos.add(titulo);
-//		}
-//	}
+	public void addTitulo(Titulo titulo) {
+		if (titulos != null){
+			titulos.add(titulo);
+		}
+	}
 
 	public void setTitulos(LinkedList<Titulo> titulos)
 	{

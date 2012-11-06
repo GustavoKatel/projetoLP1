@@ -35,9 +35,6 @@ import java.awt.event.WindowEvent;
  */
 public class Main extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;

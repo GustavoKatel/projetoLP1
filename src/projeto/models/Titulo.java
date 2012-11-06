@@ -1,9 +1,9 @@
 package projeto.models;
 
 /**
- *Classe modelo para T�tulos.
+ *Classe modelo para  titulos.
  * 
- * @author Arthur, Gustavo, Marcelo, Rodolfo
+ * @author Arthur, Gustavo, C.Marcelo, Rodolfo
  * 
  */
 public class Titulo {
