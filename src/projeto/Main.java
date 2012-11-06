@@ -32,9 +32,6 @@ import javax.swing.SwingConstants;
  */
 public class Main extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JDesktopPane desktopPane;

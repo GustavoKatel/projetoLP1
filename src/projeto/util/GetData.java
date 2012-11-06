@@ -6,6 +6,11 @@ public abstract class GetData {
 
 	private GetData(){  };
 	
+	/**
+	 * @param message
+	 * @return
+	 */
+	
 	public static int getInt(String message)
 	{
 		boolean errado=true;
@@ -17,7 +22,7 @@ public abstract class GetData {
 				v = Integer.parseInt(JOptionPane.showInputDialog(message));
 				errado=false;
 			}catch (NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Digite um número válido.");
+				JOptionPane.showMessageDialog(null, "Digite um nï¿½mero vï¿½lido.");
 				errado=true;
 			}
 		}
@@ -35,7 +40,7 @@ public abstract class GetData {
 				v = Double.parseDouble(JOptionPane.showInputDialog(message));
 				errado=false;
 			}catch (NumberFormatException e) {
-				JOptionPane.showMessageDialog(null, "Digite um número válido.");
+				JOptionPane.showMessageDialog(null, "Digite um nï¿½mero vï¿½lido.");
 				errado=true;
 			}
 		}

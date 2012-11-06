@@ -24,7 +24,7 @@ import java.beans.PropertyVetoException;
 public class JTitulo extends JInternalFrame {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private LinkedList<Titulo> titulos;
 	private Titulo titulo;
 	private JTextField curso_text;
@@ -33,7 +33,7 @@ public class JTitulo extends JInternalFrame {
 	private JFormattedTextField ano_forText;
 	private JComboBox tipo_combo;
 	private JFormattedTextField uf_forText;
-	//
+
 	private boolean novo=false;
 	
 	/**

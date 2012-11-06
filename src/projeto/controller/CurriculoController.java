@@ -3,6 +3,10 @@ package projeto.controller;
 import java.util.LinkedList;
 import projeto.models.Curriculo;
 
+/**
+ * @author Arthur, Gustavo, Rodolfo, C.Marcelo
+ *
+ */
 public class CurriculoController {
 
 	private static LinkedList<Curriculo> curriculos = null;
@@ -18,6 +22,10 @@ public class CurriculoController {
 		return curriculos.add(obj);
 	}
 
+	/**
+	 * @param curriculo
+	 * @return
+	 */
 	public boolean uptade(Curriculo curriculo)
 	{
 		for(Curriculo c:curriculos)

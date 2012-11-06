@@ -3,7 +3,7 @@ package projeto.models;
 /**
  * Classe abstrata de dados para modelos de Experiencia Profissional Docente e Relevante
  * 
- * @author Arthur, Gustavo, Marcelo, Rodolfo
+ * @author Arthur, Gustavo, C.Marcelo, Rodolfo
  *
  */
 

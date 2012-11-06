@@ -1,9 +1,9 @@
 package projeto.models;
 
 /**
- *Classe modelo para T�tulos.
+ *Classe modelo para  titulos.
  * 
- * @author Arthur, Gustavo, Marcelo, Rodolfo
+ * @author Arthur, Gustavo, C.Marcelo, Rodolfo
  * 
  */
 public class Titulo {
@@ -17,10 +17,10 @@ public class Titulo {
 
 	/**
 	 * 
-	 * @param ano ano em que foi conclu�do o curso
-	 * @param formacao tipo de forma��o
-	 * @param curso curso no qual foi conclu�do
-	 * @param instituicao institui��o na qual foi conclu�do o curso
+	 * @param ano ano em que foi concluido o curso
+	 * @param formacao tipo de formacao
+	 * @param curso curso no qual foi concluído
+	 * @param instituicao instituicao na qual foi concluido o curso
 	 * @param cidade cidade em que foi feito o curso
 	 * @param estado estado a que a cidade pertence
 	 */

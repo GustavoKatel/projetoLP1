@@ -1,6 +1,5 @@
 package projeto.models;
 
-//Classe de manipulação de dados de Publicação
 /**
  * Classe modelo para implementar Publicações 
  * 
