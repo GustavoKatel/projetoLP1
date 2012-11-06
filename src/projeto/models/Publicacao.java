@@ -23,6 +23,7 @@ public class Publicacao {
 	public Publicacao(String titulo, String autores, String evento, String area,
 			int ano) {
 		super();
+		this.area = area;
 		this.titulo = titulo;
 		this.autores = autores;
 		this.evento = evento;
@@ -66,5 +67,9 @@ public class Publicacao {
 
 	public void setAno(int ano) {
 		this.ano = ano;
+	}
+	public String toString()
+	{
+		return "("+ano+") "+titulo+" - "+autores+" , "+evento+" . "+area+" . ";
 	}
 }
